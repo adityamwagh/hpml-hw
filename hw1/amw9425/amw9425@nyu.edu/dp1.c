@@ -16,9 +16,9 @@ float dp1(long N, float* pA, float* pB) {
 
 int main(int argc, char* argv[]) {
 
-  // get array size and number of repetitions
+  // get array size and number of iterations
   long int N = atoi(argv[1]);
-  int repetitions = atoi(argv[2]);
+  int iterations = atoi(argv[2]);
 
   // initialize and populate arrays
   float* A = (float*)malloc(N * sizeof(float));
@@ -29,12 +29,12 @@ int main(int argc, char* argv[]) {
   }
 
   // time measurement
-  double times[repetitions];
+  double times[iterations];
 
   // initilize timers
   struct timespec start, end;
 
-  for (int i = 0; i < repetitions; ++i) {
+  for (int i = 0; i < iterations; ++i) {
 
     // start timer
     clock_gettime(CLOCK_MONOTONIC, &start);
@@ -43,16 +43,15 @@ int main(int argc, char* argv[]) {
 
     // stop timer
     clock_gettime(CLOCK_MONOTONIC, &end);
-  }
 
-  // store time for each repetition
-  for (int i = 0; i < repetitions; ++i) {
+    // store time for each repetition
     times[i] = ((double)end.tv_sec - (double)start.tv_sec) * 1000000
       + ((double)end.tv_nsec - (double)start.tv_nsec) / 1000;
   }
+
   // print the time
-  for (int i = 0; i < repetitions; ++i) {
-    printf("Iteration %4d - N: %ld, <T>: %.11f uS \n", i + 1, N, times[i]);
+  for (int i = 0; i < iterations; ++i) {
+    printf("Iteration: %4d - N: %ld, <T>: %.11f uS \n", i + 1, N, times[i]);
   }
 
   // free the memory
