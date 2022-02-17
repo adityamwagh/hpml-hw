@@ -18,14 +18,18 @@ int main(int argc, char* argv[]) {
   long int N = atoi(argv[1]);
   int iterations = atoi(argv[2]);
 
+  // defining constants for division
+  const double GIGA = 1024 * 1024 * 1024;
+  const double BILLION = 1000000000;
+
   // initialize and populate arrays
-  float* A = (float*)malloc(N * sizeof(float));
-  float* B = (float*)malloc(N * sizeof(float));
+  float* A = malloc(N * sizeof(float));
+  float* B = malloc(N * sizeof(float));
+  float dot_product;
   for (int i = 0; i < N; ++i) {
     A[i] = 1.0;
     B[i] = 1.0;
   }
-
   // time measurement
   double times[iterations];
 
@@ -37,20 +41,40 @@ int main(int argc, char* argv[]) {
     // start timer
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    long int dot_product = bdp(N, A, B);
+    dot_product = bdp(N, A, B);
 
     // stop timer
     clock_gettime(CLOCK_MONOTONIC, &end);
 
     // store time for each repetition
-    times[i] = ((double)end.tv_sec - (double)start.tv_sec) * 1000000
-      + ((double)end.tv_nsec - (double)start.tv_nsec) / 1000;
+    times[i] = ((double)end.tv_sec - (double)start.tv_sec) + (((double)end.tv_nsec - (double)start.tv_nsec) / BILLION);
   }
 
-  // print the time
-  for (int i = 0; i < iterations; ++i) {
-    printf("Iteration: %4d - N: %ld, <T>: %.11f uS \n", i + 1, N, times[i]);
+  // computations for time
+  int sample_size = (iterations > 1) ? (iterations / 2) : 1;
+  double sum_time = 0.0;
+  double avg_time = 0.0;
+
+  // calculate avg_time based upon the number of iterations
+  if ((iterations % 2 != 0) && (iterations > 1)) {
+
+    // compute sum of times for second half of iterations
+    for (int i = sample_size; i < iterations; ++i) sum_time += times[i];
+    avg_time = sum_time / (double)(sample_size + 1);
   }
+  else {
+    avg_time = times[0];
+  }
+
+  // computations for bandwidth and flops
+  double bandwidth = ((double)N * 4. * 2. / GIGA) / avg_time;
+  double flops = ((double)N * 2.) / avg_time;
+
+  // print dot product
+  printf("Dot Product: %f\n", dot_product);
+
+  // print output to screen
+  printf("N: %4ld, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f FLOP/sec", N, avg_time, bandwidth, flops);
 
   // free the memory
   free(A);

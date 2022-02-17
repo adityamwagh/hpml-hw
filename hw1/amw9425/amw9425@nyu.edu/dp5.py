@@ -10,6 +10,9 @@ def main():
     N = int(sys.argv[1])
     iterations = int(sys.argv[2])
 
+    # defining constants for division
+    GIGA = 1024.0 * 1024.0 * 1024.0
+
     # initialize and populate arrays
     A = np.ones(N, dtype=np.float32)
     B = np.ones(N, dtype=np.float32)
@@ -31,16 +34,19 @@ def main():
         # compute and store time for each repetition
         times[i] = end - start
 
-    # time calculation
+    # calculate avg_time based upon the number of iterations
     sample_size = (iterations // 2) if iterations > 1 else 1
-    if iterations % 2 != 0:
+    if iterations % 2 != 0 and iterations > 1:
         avg_time = sum(times[sample_size:]) / (sample_size + 1)
     else:
-        avg_time = sum(times[sample_size:]) / sample_size
+        avg_time = times[i]
 
     # b/w and flops calculation
-    bandwidth = (N * 4 * 2 / (1024.0 * 1024.0 * 1024.0)) / avg_time
-    flops = N * (iterations / (1024.0 * 1024.0 * 1024.0)) / avg_time
+    bandwidth = (N * 4 * 2 / GIGA) / avg_time
+    flops = (N * 2) / avg_time
+
+    # print dot product
+    print(f"Dot Product: {dot_product}")
 
     # print results to screen
     print(
