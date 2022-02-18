@@ -38,14 +38,6 @@ def main():
         if i >= (iterations // 2):
             sum_of_times += times[i]
 
-        # b/w and flops calculation
-        curr_bandwidth = (N * np.float32().nbytes * 2) / (times[i] * GIGA)
-        curr_flops = (N * 2) / (times[i] * BILLION)
-
-        print(
-            f"Iteration: {i+1}, R: {R}, <T>: {avg_time: .6f} sec, B: {curr_bandwidth: .3f} GB/sec, F: {curr_flops: .3f} FLOP/sec"
-        )
-
     # b/w and flops calculation
     bandwidth = (N * np.float32().nbytes * 2) / (avg_time * GIGA)
     flops = (N * 2) / avg_time

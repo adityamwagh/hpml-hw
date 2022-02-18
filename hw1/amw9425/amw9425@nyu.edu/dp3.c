@@ -55,12 +55,6 @@ int main(int argc, char* argv[]) {
 
     // sum times for second half of iterations
     if (i >= (iterations / 2)) sum_of_times += times[i];
-
-    // computations for current bandwidth and flops
-    double curr_bandwidth = ((double)N * sizeof(float) * 2.0) / (times[i] * GIGA);
-    double curr_flops = ((double)N * 2.0) / (times[i] * BILLION);
-    // print output to screen
-    printf("Iteration: %4d, R: %4f, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f GFLOP/sec\n", i + 1, R, times[i], curr_bandwidth, curr_flops);
   }
 
   // computing average time for 2nd half of iterations
