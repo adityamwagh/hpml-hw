@@ -22,61 +22,63 @@ int main(int argc, char* argv[]) {
 
   // defining constants for division
   const double GIGA = 1024 * 1024 * 1024;
-  const double BILLION = 1000000000;
+  const double BILLION = 1000000000.0;
 
   // initialize and populate arrays
   float* A = malloc(N * sizeof(float));
   float* B = malloc(N * sizeof(float));
-  float dot_product;
+  float R = 0.0;
   for (int i = 0; i < N; ++i) {
     A[i] = 1.0;
     B[i] = 1.0;
   }
-  // time measurement
+
+  // computations for time
   double times[iterations];
+  double sum_of_times = 0.0;
+  double avg_time = 0.0;
 
   // initialize timers
   struct timespec start, end;
+  //  add check for iterations
 
   for (int i = 0; i < iterations; ++i) {
 
     // start timer
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    dot_product = dp1(N, A, B);
+    R = dp1(N, A, B);
 
     // stop timer
     clock_gettime(CLOCK_MONOTONIC, &end);
 
     // store time for each repetition
     times[i] = ((double)end.tv_sec - (double)start.tv_sec) + (((double)end.tv_nsec - (double)start.tv_nsec) / BILLION);
+
+    // sum times for second half of iterations
+    if (i >= (iterations / 2)) sum_of_times += times[i];
+
+    // computations for current bandwidth and flops
+    double curr_bandwidth = ((double)N * sizeof(float) * 2.0) / (times[i] * GIGA);
+    double curr_flops = ((double)N * 2.0) / (times[i] * BILLION);
+    // print output to screen
+    printf("Iteration: %4d, R: %4f, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f GFLOP/sec\n", i + 1, R, times[i], curr_bandwidth, curr_flops);
   }
 
-  // computations for time
-  int sample_size = (iterations > 1) ? (iterations / 2) : 1;
-  double sum_time = 0.0;
-  double avg_time = 0.0;
-
-  // calculate avg_time based upon the number of iterations
-  if ((iterations % 2 != 0) && (iterations > 1)) {
-
-    // compute sum of times for second half of iterations
-    for (int i = sample_size; i < iterations; ++i) sum_time += times[i];
-    avg_time = sum_time / (double)(sample_size + 1);
-  }
-  else {
-    avg_time = times[0];
-  }
+  // computing average time for 2nd half of iterations
+  if (iterations == 1) avg_time = times[0];
+  else if (iterations > 1 && iterations % 2 == 0) avg_time = sum_of_times / (double)(iterations / 2);
+  else if (iterations > 1 && iterations % 2 != 0) avg_time = sum_of_times / (double)(iterations / 2 + 1);
 
   // computations for bandwidth and flops
-  double bandwidth = ((double)N * 4 * 2 / GIGA) / avg_time;
-  double flops = ((double)N * 2) / avg_time;
+  double bandwidth = ((double)N * sizeof(float) * 2.0) / (avg_time * GIGA);
+  double flops = ((double)N * 2.0) / (avg_time * BILLION);
 
   // print dot product
-  printf("Dot Product: %f\n", dot_product);
+  printf("Dot Product: %f\n", R);
 
   // print output to screen
-  printf("N: %4ld, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f FLOP/sec", N, avg_time, bandwidth, flops);
+  printf("N: %4ld, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f GFLOP/sec", N, avg_time, bandwidth, flops);
 
   // free the memory
   free(A);
