@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
   // computations for bandwidth and flops
   double bandwidth = (((double)N / 4.0) * sizeof(float) * 8.0) / (avg_time * GIGA);
-  double flops = ((double)N * 8.0) / (avg_time * BILLION);
+  double flops = (((double)N / 4.0) * 8.0) / (avg_time * BILLION);
 
   // print dot product
   printf("Dot Product: %f\n", R);

@@ -63,8 +63,8 @@ int main(int argc, char* argv[]) {
   else if (iterations > 1 && iterations % 2 != 0) avg_time = sum_of_times / (double)(iterations / 2 + 1);
 
   // computations for bandwidth and flops
-  double bandwidth = ((double)N * sizeof(float) * 2.0) / (avg_time * GIGA);
-  double flops = ((double)N * 2.0) / (avg_time * BILLION);
+  double bandwidth = (((double)N / 5.0) * sizeof(float) * 10.0) / (avg_time * GIGA);
+  double flops = (((double)N / 5.0) * 10.0) / (avg_time * BILLION);
 
   // print dot product
   printf("Dot Product: %f\n", R);

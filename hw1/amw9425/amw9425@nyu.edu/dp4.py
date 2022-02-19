@@ -34,6 +34,7 @@ def main():
     # metric measurement
     times = np.zeros(iterations, dtype=np.float32)
     avg_time = 0.0
+    sum_of_times = 0.0
 
     for i in range(iterations):
 
