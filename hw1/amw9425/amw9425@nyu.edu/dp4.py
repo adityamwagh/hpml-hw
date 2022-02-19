@@ -52,6 +52,14 @@ def main():
         if i >= (iterations // 2):
             sum_of_times += times[i]
 
+    # computing average time for 2nd half of iterations
+    if iterations == 1:
+        avg_time = times[0]
+    elif iterations > 1 and iterations % 2 == 0:
+        avg_time = sum_of_times / (iterations // 2)
+    elif iterations > 1:
+        avg_time = sum_of_times / (iterations // 2 + 1)
+
     # b/w and flops calculation
     bandwidth = (N * np.float32().nbytes * 2) / (avg_time * GIGA)
     flops = (N * 2) / (avg_time * BILLION)
