@@ -1,9 +1,18 @@
-from audioop import avg
 import sys
 import time
 
 import numpy as np
 
+def dp(A, B):
+
+    # value of dot product
+    R = 0.0
+
+    # loop through arrays and compute dot product
+    R = np.dot(A, B)
+
+    # return the value of dot product
+    return R
 
 def main():
 
@@ -29,7 +38,7 @@ def main():
         # start timer
         start = time.monotonic()
 
-        R = np.dot(A, B)
+        R = dp(A, B)
 
         # stop timer
         end = time.monotonic()
