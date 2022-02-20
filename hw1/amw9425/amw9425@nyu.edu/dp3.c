@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
   printf("Dot Product: %f\n", R);
 
   // print output to screen
-  printf("N: %4ld, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f GFLOP/sec", N, avg_time, bandwidth, flops);
+  printf("N: %4ld, <T>: %.6f sec, B: %.3f GB/sec, F: %.3f GFLOP/sec\n", N, avg_time, bandwidth, flops);
 
   // free the memory
   free(A);
