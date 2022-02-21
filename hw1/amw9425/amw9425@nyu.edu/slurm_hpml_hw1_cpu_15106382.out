@@ -1,0 +1,21 @@
+/opt/slurm/data/slurmd/job15106382/slurm_script: line 18: cd: /scratch/amw9425/hpml_hw/hw1/amw9425/amw9425@nyu.edu: No such file or directory
+Dot Product: 1000000.000000
+N: 1000000, <T>: 0.001156 sec, B: 6.919 GB/sec, F: 1.730 GFLOP/sec
+Dot Product: 16777216.000000
+N: 300000000, <T>: 0.372120 sec, B: 6.450 GB/sec, F: 1.612 GFLOP/sec
+Dot Product: 1000000.000000
+N: 1000000, <T>: 0.000390 sec, B: 20.488 GB/sec, F: 5.122 GFLOP/sec
+Dot Product: 67108864.000000
+N: 300000000, <T>: 0.216306 sec, B: 11.095 GB/sec, F: 2.774 GFLOP/sec
+Dot Product: 1000000.000000
+N: 1000000, <T>: 0.000334 sec, B: 23.956 GB/sec, F: 5.989 GFLOP/sec
+Dot Product: 300000000.000000
+N: 300000000, <T>: 0.181153 sec, B: 13.248 GB/sec, F: 3.312 GFLOP/sec
+Dot Product: 1000000.0
+N: 1000000, <T>:  0.548380 sec, B:  0.015 GB/sec, F:  0.004 GFLOP/sec
+Dot Product: 300000000.0
+N: 300000000, <T>:  171.478490 sec, B:  0.014 GB/sec, F:  0.003 GFLOP/sec
+Dot Product: 1000000.0
+N: 1000000, <T>:  0.000334 sec, B:  23.931 GB/sec, F:  5.983 GFLOP/sec
+Dot Product: 300000000.0
+N: 300000000, <T>:  0.176482 sec, B:  13.599 GB/sec, F:  3.400 GFLOP/sec
