@@ -3,6 +3,7 @@ import time
 
 import numpy as np
 
+
 def dp(A, B):
 
     # value of dot product
@@ -14,6 +15,7 @@ def dp(A, B):
     # return the value of dot product
     return R
 
+
 def main():
 
     # get array size and number of iterations
@@ -21,7 +23,6 @@ def main():
     iterations = int(sys.argv[2])
 
     # defining constants for division
-    GIGA = 1024.0 * 1024.0 * 1024.0
     BILLION = 1000000000.0
 
     # initialize and populate arrays
@@ -58,7 +59,7 @@ def main():
         avg_time = sum_of_times / (iterations // 2 + 1)
 
     # b/w and flops calculation
-    bandwidth = (N * np.float32().nbytes * 2) / (avg_time * GIGA)
+    bandwidth = (N * np.float32().nbytes * 2) / (avg_time * BILLION)
     flops = (N * 2) / (avg_time * BILLION)
 
     # print dot product
@@ -66,7 +67,7 @@ def main():
 
     # print results to screen
     print(
-        f"N: {N}, <T>: {avg_time: .6f} sec, B: {bandwidth: .3f} GB/sec, F: {flops: .3f} FLOP/sec"
+        f"N: {N}, <T>: {avg_time: .6f} sec, B: {bandwidth: .3f} GB/sec, F: {flops: .3f} GFLOP/sec"
     )
 
 

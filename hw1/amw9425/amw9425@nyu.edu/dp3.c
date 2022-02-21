@@ -19,7 +19,6 @@ int main(int argc, char* argv[]) {
   int iterations = atoi(argv[2]);
 
   // defining constants for division
-  const double GIGA = 1024 * 1024 * 1024;
   const double BILLION = 1000000000.0;
 
   // initialize and populate arrays
@@ -63,7 +62,7 @@ int main(int argc, char* argv[]) {
   else if (iterations > 1 && iterations % 2 != 0) avg_time = sum_of_times / (double)(iterations / 2 + 1);
 
   // computations for bandwidth and flops
-  double bandwidth = (((double)N / 5.0) * sizeof(float) * 10.0) / (avg_time * GIGA);
+  double bandwidth = (((double)N / 5.0) * sizeof(float) * 10.0) / (avg_time * BILLION);
   double flops = (((double)N / 5.0) * 10.0) / (avg_time * BILLION);
 
   // print dot product
