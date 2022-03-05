@@ -225,8 +225,6 @@ for epoch in range(args.epochs):
 
     # start the epoch training time timer
     start_ett = time.perf_counter()
-
-    print(f"Epoch: {epoch + 1}")
     model.train()
     train_loss = 0
     correct = 0
@@ -265,17 +263,13 @@ for epoch in range(args.epochs):
         total += targets.size(0)
         correct += predicted.eq(targets).sum().item()
 
+        curr_accuracy = 100.0 * correct / total
+        curr_loss = train_loss / (batch_idx + 1)
         # add loss and accuracy of each epoch to an array
-        epoch_accuracy.append(100.0 * correct / total)
-        epoch_loss.append(train_loss / (batch_idx + 1))
+        epoch_accuracy.append(curr_accuracy)
+        epoch_loss.append(curr_loss)
 
-        progress_bar(
-            batch_idx,
-            len(train_data_loader),
-            "Loss: %.3f | Acc: %.3f%% (%d/%d)" %
-            (train_loss /
-             (batch_idx + 1), 100.0 * correct / total, correct, total),
-        )
+        print(f"Epoch: {epoch + 1} | Training Loss: {curr_loss: .3f} | Training Accuracy: {curr_accuracy: .3f}")
 
 print(f"Finished training using {args.optimizer}")
 
