@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=hw2_computations
-#SBATCH --time=00:10:00
+#SBATCH --time=3:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=16
