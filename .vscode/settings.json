@@ -1,5 +1,9 @@
 {
     "files.associations": {
         "ctime": "c"
-    }
+    },
+    "python.analysis.extraPaths": [
+        "./hw2/amw9425",
+        "./hw2/amw9425"
+    ]
 }
