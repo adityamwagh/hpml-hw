@@ -2,7 +2,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torch.backends.cudnn as cudnn
 
 import torchvision
 
@@ -23,7 +22,7 @@ parser.add_argument(
     default="cpu",
     choices=["gpu", "cpu"],
     required=True,
-    help="specify the compute device: GPU or CPU",
+    help="specify the compute device: gpu or cpu. If there's no GPU, specifying gpu will default to cpu. ",
 )
 parser.add_argument("-dp",
                     "--datapath",
@@ -131,7 +130,6 @@ VARIABLES FOR MEASURING TIME
 
 """
 
-
 epoch_data_loading_time = []
 epoch_training_time = []
 epoch_accuracy = []
@@ -167,20 +165,16 @@ MODEL AND HYPERPARAMETER DEFINITION
 # set the device for computation
 if args.device == "gpu":
     if torch.cuda.is_available():
-        print(f"GPU is available. using torch. Using {torch.cuda.get_device_name()}")
+        print(
+            f"GPU is available. Training on {torch.cuda.get_device_name()}"
+        )
         device = torch.device("cuda")
-elif args.device == "cpu":
+else:
     device = torch.device("cpu")
 
 # setup model accordingly
 model = ResNet18NoBN() if args.disable_batchnorm else ResNet18()
 model = model.to(device)
-
-if device == torch.device("cuda"):
-
-    # enable data parallelism in the model
-    model = torch.nn.DataParallel(model)
-    cudnn.benchmark
 
 # get optimizer from the arguments
 if args.optimizer == "sgd":
@@ -215,12 +209,11 @@ elif args.optimizer == "adadelta":
                                weight_decay=args.weight_decay)
 
 criterion = nn.CrossEntropyLoss()
-
 """
 TRAINING LOOP
 """
 
-print(f"Started training using {args.optimizer}")
+print(f"Started training using {args.optimizer} optimizer.")
 
 # start the total training time counter
 start_ttt = time.perf_counter()
