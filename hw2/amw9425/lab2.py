@@ -206,7 +206,6 @@ if __name__== "__main__":
     ####################################################################################################################
 
     print(f"Started training using {args.optimizer} optimizer.")
-    print("\n")
 
     # start the total training time counter
     start_ttt = time.perf_counter()
