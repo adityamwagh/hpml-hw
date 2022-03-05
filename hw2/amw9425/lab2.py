@@ -162,16 +162,19 @@ test_data_loader = torch.utils.data.DataLoader(test_data,
 """
 MODEL AND HYPERPARAMETER DEFINITION
 """
+device = None
+
 # set the device for computation
 if args.device == "gpu":
     if torch.cuda.is_available():
         print(
             f"GPU is available. Training on {torch.cuda.get_device_name()}"
         )
-        device = torch.device("cuda")
+        device = "cuda"
 else:
-    device = torch.device("cpu")
+    device = "cpu"
 
+print(torch.cuda.is_available())
 # setup model accordingly
 model = ResNet18NoBN() if args.disable_batchnorm else ResNet18()
 model = model.to(device)
