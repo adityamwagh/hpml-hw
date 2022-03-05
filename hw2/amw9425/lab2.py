@@ -173,8 +173,7 @@ if args.device == "gpu":
         device = "cuda"
 else:
     device = "cpu"
-
-print(torch.cuda.is_available())
+    
 # setup model accordingly
 model = ResNet18NoBN() if args.disable_batchnorm else ResNet18()
 model = model.to(device)
