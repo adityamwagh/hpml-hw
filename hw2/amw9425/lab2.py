@@ -319,5 +319,5 @@ if __name__ == "__main__":
     # MODEL PARAMETERS
     ####################################################################################################################
 
-    # print(sum([param.nelement() for param in model.parameters()]))
+    # print(sum(p.numel() for p in model.parameters() if p.requires_grad))
 print("\n")
