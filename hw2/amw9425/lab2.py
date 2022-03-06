@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torchvision
+from torchsummary import summary
 
 from resnet import ResNet18
 from resnet_nobn import ResNet18_NoBN
@@ -320,4 +321,5 @@ if __name__ == "__main__":
     ####################################################################################################################
 
     # print(sum(p.numel() for p in model.parameters() if p.requires_grad))
+    print(summary(model, (3, 32, 32)))
 print("\n")
