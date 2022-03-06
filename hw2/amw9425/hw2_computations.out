@@ -1,0 +1,13 @@
+==============================================================================================================
+Running the computations for Question: C2
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Tesla V100-PCIE-32GB
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.853 | Training Accuracy:  32.534
+Epoch: 2 | Training Loss:  1.362 | Training Accuracy:  49.656
+Finished training using sgd optimizer.
+Epoch 1 | Data Loading Time: 0.6357233365997672 sec | Training Time: 6.471158470027149 sec | Running Time: 18.308935857377946
+Epoch 2 | Data Loading Time: 0.5863849641755223 sec | Training Time: 5.42687158472836 sec | Running Time: 17.09048279840499
+
+

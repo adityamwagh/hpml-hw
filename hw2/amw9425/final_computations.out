@@ -1,0 +1,254 @@
+==============================================================================================================
+Running the computations for Question: C2
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.962 | Training Accuracy:  30.316
+Epoch: 2 | Training Loss:  1.457 | Training Accuracy:  46.228
+Epoch: 3 | Training Loss:  1.218 | Training Accuracy:  55.786
+Epoch: 4 | Training Loss:  1.039 | Training Accuracy:  63.240
+Epoch: 5 | Training Loss:  0.907 | Training Accuracy:  67.902
+Finished training using sgd optimizer.
+Epoch 1 | Data Loading Time: 0.5112425903789699 sec | Training Time: 4.357588858809322 sec | Running Time: 0
+Epoch 2 | Data Loading Time: 0.4941171845421195 sec | Training Time: 3.606302650179714 sec | Running Time: 0
+Epoch 3 | Data Loading Time: 0.4444239162839949 sec | Training Time: 3.511004662141204 sec | Running Time: 0
+Epoch 4 | Data Loading Time: 0.46988985734060407 sec | Training Time: 3.5217495253309608 sec | Running Time: 0
+Epoch 5 | Data Loading Time: 0.4611910884268582 sec | Training Time: 3.499953154474497 sec | Running Time: 119.52120345877483
+
+
+==============================================================================================================
+Running the computations for Question: C3
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.929 | Training Accuracy:  31.276
+Epoch: 2 | Training Loss:  1.456 | Training Accuracy:  46.480
+Epoch: 3 | Training Loss:  1.233 | Training Accuracy:  55.468
+Epoch: 4 | Training Loss:  1.031 | Training Accuracy:  63.432
+Epoch: 5 | Training Loss:  0.886 | Training Accuracy:  68.706
+Finished training using sgd optimizer.
+Total Data loading time for 0 workers: 61.20903830695897 sec
+
+
+==============================================================================================================
+Running the computations for Question: C3
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.968 | Training Accuracy:  30.528
+Epoch: 2 | Training Loss:  1.461 | Training Accuracy:  45.928
+Epoch: 3 | Training Loss:  1.201 | Training Accuracy:  55.978
+Epoch: 4 | Training Loss:  1.002 | Training Accuracy:  64.106
+Epoch: 5 | Training Loss:  0.851 | Training Accuracy:  69.862
+Finished training using sgd optimizer.
+Total Data loading time for 4 workers: 3.0427904189564288 sec
+
+
+==============================================================================================================
+Running the computations for Question: C3
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.930 | Training Accuracy:  30.360
+Epoch: 2 | Training Loss:  1.469 | Training Accuracy:  45.700
+Epoch: 3 | Training Loss:  1.201 | Training Accuracy:  56.762
+Epoch: 4 | Training Loss:  0.976 | Training Accuracy:  65.276
+Epoch: 5 | Training Loss:  0.828 | Training Accuracy:  70.908
+Finished training using sgd optimizer.
+Total Data loading time for 8 workers: 4.39697677642107 sec
+
+
+==============================================================================================================
+Running the computations for Question: C3
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.091 | Training Accuracy:  26.432
+Epoch: 2 | Training Loss:  1.556 | Training Accuracy:  42.104
+Epoch: 3 | Training Loss:  1.329 | Training Accuracy:  51.522
+Epoch: 4 | Training Loss:  1.127 | Training Accuracy:  59.528
+Epoch: 5 | Training Loss:  0.959 | Training Accuracy:  65.608
+Finished training using sgd optimizer.
+Total Data loading time for 12 workers: 5.703142302110791 sec
+
+
+==============================================================================================================
+Running the computations for Question: C3
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.026 | Training Accuracy:  27.814
+Epoch: 2 | Training Loss:  1.553 | Training Accuracy:  42.490
+Epoch: 3 | Training Loss:  1.324 | Training Accuracy:  51.710
+Epoch: 4 | Training Loss:  1.101 | Training Accuracy:  60.442
+Epoch: 5 | Training Loss:  0.957 | Training Accuracy:  65.914
+Finished training using sgd optimizer.
+Total Data loading time for 16 workers: 7.092229638248682 sec
+
+
+==============================================================================================================
+Running the computations for Question: C4
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.118 | Training Accuracy:  27.420
+Epoch: 2 | Training Loss:  1.552 | Training Accuracy:  42.542
+Epoch: 3 | Training Loss:  1.333 | Training Accuracy:  51.264
+Epoch: 4 | Training Loss:  1.140 | Training Accuracy:  59.018
+Epoch: 5 | Training Loss:  0.983 | Training Accuracy:  64.770
+Finished training using sgd optimizer.
+Total Data loading time for 1 workers: 2.2164180371910334 sec
+
+
+==============================================================================================================
+Running the computations for Question: C4
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.998 | Training Accuracy:  29.458
+Epoch: 2 | Training Loss:  1.527 | Training Accuracy:  43.604
+Epoch: 3 | Training Loss:  1.303 | Training Accuracy:  52.520
+Epoch: 4 | Training Loss:  1.106 | Training Accuracy:  60.232
+Epoch: 5 | Training Loss:  0.946 | Training Accuracy:  66.240
+Finished training using sgd optimizer.
+Total Data loading time for 4 workers: 3.1092531885951757 sec
+
+
+==============================================================================================================
+Running the computations for Question: C5
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.058 | Training Accuracy:  28.840
+Epoch: 2 | Training Loss:  1.498 | Training Accuracy:  44.678
+Epoch: 3 | Training Loss:  1.202 | Training Accuracy:  56.432
+Epoch: 4 | Training Loss:  0.963 | Training Accuracy:  65.924
+Epoch: 5 | Training Loss:  0.788 | Training Accuracy:  72.286
+Finished training using sgd optimizer.
+Average running time for 5 epochs on a GPU: 0.5990580784156918
+
+
+==============================================================================================================
+Running the computations for Question: C5
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.106 | Training Accuracy:  24.614
+Epoch: 2 | Training Loss:  1.559 | Training Accuracy:  41.886
+Epoch: 3 | Training Loss:  1.337 | Training Accuracy:  50.868
+Epoch: 4 | Training Loss:  1.137 | Training Accuracy:  59.156
+Epoch: 5 | Training Loss:  0.956 | Training Accuracy:  66.020
+Finished training using sgd optimizer.
+Average running time for 5 epochs on a CPU: 0.7401955858804286
+
+
+==============================================================================================================
+Running the computations for Question: C6
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.938 | Training Accuracy:  29.446
+Epoch: 2 | Training Loss:  1.446 | Training Accuracy:  46.524
+Epoch: 3 | Training Loss:  1.180 | Training Accuracy:  57.058
+Epoch: 4 | Training Loss:  0.973 | Training Accuracy:  65.330
+Epoch: 5 | Training Loss:  0.827 | Training Accuracy:  70.540
+Finished training using sgd optimizer.
+Average training time per epoch for SGD: 0.583344934694469 sec
+Average loss per epoch for SGD: 26.8898 sec
+Average top-1 training per epoch for SGD: 0.6364416888781956 sec
+
+
+==============================================================================================================
+Running the computations for Question: C6
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGDNEST optimizer.
+Epoch: 1 | Training Loss:  2.008 | Training Accuracy:  28.488
+Epoch: 2 | Training Loss:  1.440 | Training Accuracy:  46.586
+Epoch: 3 | Training Loss:  1.150 | Training Accuracy:  58.574
+Epoch: 4 | Training Loss:  0.950 | Training Accuracy:  66.340
+Epoch: 5 | Training Loss:  0.828 | Training Accuracy:  70.662
+Finished training using sgdnest optimizer.
+Average training time per epoch for SGDNEST: 0.5947091296315193 sec
+Average loss per epoch for SGDNEST: 27.064999999999998 sec
+Average top-1 training per epoch for SGDNEST: 0.6375467820283102 sec
+
+
+==============================================================================================================
+Running the computations for Question: C6
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using ADAGRAD optimizer.
+Epoch: 1 | Training Loss:  2.183 | Training Accuracy:  24.562
+Epoch: 2 | Training Loss:  1.682 | Training Accuracy:  36.960
+Epoch: 3 | Training Loss:  1.505 | Training Accuracy:  44.532
+Epoch: 4 | Training Loss:  1.325 | Training Accuracy:  51.556
+Epoch: 5 | Training Loss:  1.161 | Training Accuracy:  58.106
+Finished training using adagrad optimizer.
+Average training time per epoch for ADAGRAD: 0.5941112943924963 sec
+Average loss per epoch for ADAGRAD: 21.5716 sec
+Average top-1 training per epoch for ADAGRAD: 0.7856709843083305 sec
+
+
+==============================================================================================================
+Running the computations for Question: C6
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using ADADELTA optimizer.
+Epoch: 1 | Training Loss:  1.352 | Training Accuracy:  50.558
+Epoch: 2 | Training Loss:  0.855 | Training Accuracy:  69.604
+Epoch: 3 | Training Loss:  0.665 | Training Accuracy:  76.762
+Epoch: 4 | Training Loss:  0.566 | Training Accuracy:  80.336
+Epoch: 5 | Training Loss:  0.498 | Training Accuracy:  82.724
+Finished training using adadelta optimizer.
+Average training time per epoch for ADADELTA: 0.6136820008046925 sec
+Average loss per epoch for ADADELTA: 35.9984 sec
+Average top-1 training per epoch for ADADELTA: 0.39350479026990276 sec
+
+
+==============================================================================================================
+Running the computations for Question: C6
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using ADAM optimizer.
+Epoch: 1 | Training Loss:  2.190 | Training Accuracy:  22.602
+Epoch: 2 | Training Loss:  1.865 | Training Accuracy:  28.462
+Epoch: 3 | Training Loss:  1.818 | Training Accuracy:  30.134
+Epoch: 4 | Training Loss:  1.815 | Training Accuracy:  30.024
+Epoch: 5 | Training Loss:  1.811 | Training Accuracy:  30.190
+Finished training using adam optimizer.
+Average training time per epoch for ADAM: 0.6082001628354192 sec
+Average loss per epoch for ADAM: 14.141200000000001 sec
+Average top-1 training per epoch for ADAM: 0.9499274926222101 sec
+
+
+==============================================================================================================
+Running the computations for Question: C7
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.905 | Training Accuracy:  27.862
+Epoch: 2 | Training Loss:  1.509 | Training Accuracy:  44.402
+Epoch: 3 | Training Loss:  1.277 | Training Accuracy:  54.052
+Epoch: 4 | Training Loss:  1.077 | Training Accuracy:  62.072
+Epoch: 5 | Training Loss:  0.936 | Training Accuracy:  67.630
+Finished training using sgd optimizer.
+Average training loss per epoch without batch normalization layers: 0.6704866854207856
+Average top-1 training accuracy per epoch without batch normalization layers: 25.601800000000004
+
+

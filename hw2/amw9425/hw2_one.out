@@ -1,0 +1,13 @@
+==============================================================================================================
+Running the computations for Question: C2
+Files already downloaded and verified
+Files already downloaded and verified
+GPU is available. Training on Quadro RTX 8000
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.880 | Training Accuracy:  31.290
+Epoch: 2 | Training Loss:  1.393 | Training Accuracy:  48.822
+Finished training using sgd optimizer.
+Epoch 1 | Data Loading Time: 0.5320989806205034 sec | Training Time: 4.39023479539901 sec | Running Time: 24.41586704272777 sec
+Epoch 2 | Data Loading Time: 0.5265608727931976 sec | Training Time: 3.556234123185277 sec | Running Time: 23.645467270165682 sec
+
+
