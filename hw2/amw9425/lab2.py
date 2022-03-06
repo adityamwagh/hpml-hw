@@ -210,10 +210,10 @@ if __name__ == "__main__":
 
     print(f"Started training using {args.optimizer.upper()} optimizer.")
 
-    # start the totalrunning time counter
-    start_running_time_timer = time.perf_counter()
-
     for epoch in range(args.epochs):
+
+        # start the totalrunning time counter
+        start_running_time_timer = time.perf_counter()
 
         model.train()
         train_loss = 0
@@ -273,9 +273,8 @@ if __name__ == "__main__":
 
         # end the total training time counter
         end_running_time_timer = time.perf_counter()
-        TOTAL_RUNNING_TIME[epoch] += end_running_time_timer - start_running_time_timer
-
-        start_running_time_timer = time.perf_counter()
+        TOTAL_RUNNING_TIME[
+            epoch] += end_running_time_timer - start_running_time_timer
 
     print(f"Finished training using {args.optimizer} optimizer.")
 
@@ -297,24 +296,24 @@ if __name__ == "__main__":
         )
     elif args.question == "c5":
         print(
-            f"Average running time for {args.epochs} epochs on a {args.device.upper()}: {sum(EPOCH_DATA_LOADING_TIME) / len(EPOCH_DATA_LOADING_TIME)}"
+            f"Average running time for {args.epochs} epochs on a {args.device.upper()}: {sum(TOTAL_RUNNING_TIME) / args.epochs}"
         )
     elif args.question == "c6":
         print(
-            f"Average training time per epoch for {args.optimizer.upper()}: {sum(EPOCH_DATA_LOADING_TIME) / len(EPOCH_DATA_LOADING_TIME)} sec"
+            f"Average training time per epoch for {args.optimizer.upper()}: {sum(EPOCH_TRAINING_TIME) / args.epochs} sec"
         )
         print(
-            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / len(EPOCH_ACCURACY)} sec"
+            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)} sec"
         )
         print(
-            f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)} sec"
+            f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / args.epochs} sec"
         )
     elif args.question == "c7":
         print(
-            f"Average training loss per epoch without batch normalization layers: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)}"
+            f"Average training loss per epoch without batch normalization layers: {sum(EPOCH_LOSS) / args.epochs}"
         )
         print(
-            f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(EPOCH_ACCURACY) / len(EPOCH_ACCURACY)}"
+            f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(EPOCH_ACCURACY) / args.epochs}"
         )
 
 print("\n")
