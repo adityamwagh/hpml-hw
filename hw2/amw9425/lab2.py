@@ -288,7 +288,7 @@ if __name__ == "__main__":
                 zip(EPOCH_DATA_LOADING_TIME, EPOCH_TRAINING_TIME,
                     TOTAL_RUNNING_TIME)):
             print(
-                f"Epoch {i+1} | Data Loading Time: {a} sec | Training Time: {b} sec | Running Time: {c} sec"
+                f"Epoch {i+1} | Data Loading Time: {a: .3f} sec | Training Time: {b: .3f} sec | Running Time: {c: .3f} sec"
             )
     elif args.question in ["c3", "c4"]:
         print(
@@ -303,7 +303,7 @@ if __name__ == "__main__":
             f"Average training time per epoch for {args.optimizer.upper()}: {sum(EPOCH_TRAINING_TIME) / args.epochs} sec"
         )
         print(
-            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)}"
+            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / args.epochs}"
         )
         print(
             f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / args.epochs}"
@@ -315,5 +315,9 @@ if __name__ == "__main__":
         print(
             f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(EPOCH_ACCURACY) / args.epochs}"
         )
+    ####################################################################################################################
+    # MODEL PARAMETERS
+    ####################################################################################################################
 
+    # print(sum([param.nelement() for param in model.parameters()]))
 print("\n")
