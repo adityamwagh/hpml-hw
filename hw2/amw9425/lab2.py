@@ -210,7 +210,7 @@ if __name__ == "__main__":
 
     print(f"Started training using {args.optimizer.upper()} optimizer.")
 
-    # start the total training time counter
+    # start the totalrunning time counter
     start_running_time_timer = time.perf_counter()
 
     for epoch in range(args.epochs):
@@ -271,9 +271,11 @@ if __name__ == "__main__":
             f"Epoch: {epoch + 1} | Training Loss: {current_loss: .3f} | Training Accuracy: {current_accuracy: .3f}"
         )
 
-    # end the total training time counter
-    end_running_time_timer = time.perf_counter()
-    TOTAL_RUNNING_TIME[epoch] = end_running_time_timer - start_running_time_timer
+        # end the total training time counter
+        end_running_time_timer = time.perf_counter()
+        TOTAL_RUNNING_TIME[epoch] = end_running_time_timer - start_running_time_timer
+        start_running_time_timer = time.perf_counter()
+
     print(f"Finished training using {args.optimizer} optimizer.")
 
     ####################################################################################################################
