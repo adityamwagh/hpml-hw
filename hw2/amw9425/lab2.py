@@ -273,7 +273,8 @@ if __name__ == "__main__":
 
         # end the total training time counter
         end_running_time_timer = time.perf_counter()
-        TOTAL_RUNNING_TIME[epoch] = end_running_time_timer - start_running_time_timer
+        TOTAL_RUNNING_TIME[epoch] += end_running_time_timer - start_running_time_timer
+
         start_running_time_timer = time.perf_counter()
 
     print(f"Finished training using {args.optimizer} optimizer.")
