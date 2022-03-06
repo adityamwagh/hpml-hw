@@ -288,7 +288,7 @@ if __name__ == "__main__":
                 zip(EPOCH_DATA_LOADING_TIME, EPOCH_TRAINING_TIME,
                     TOTAL_RUNNING_TIME)):
             print(
-                f"Epoch {i+1} | Data Loading Time: {a} sec | Training Time: {b} sec | Running Time: {c}"
+                f"Epoch {i+1} | Data Loading Time: {a} sec | Training Time: {b} sec | Running Time: {c} sec"
             )
     elif args.question in ["c3", "c4"]:
         print(
@@ -296,17 +296,17 @@ if __name__ == "__main__":
         )
     elif args.question == "c5":
         print(
-            f"Average running time for {args.epochs} epochs on a {args.device.upper()}: {sum(TOTAL_RUNNING_TIME) / args.epochs}"
+            f"Average running time for {args.epochs} epochs on a {args.device.upper()}: {sum(TOTAL_RUNNING_TIME) / args.epochs} sec"
         )
     elif args.question == "c6":
         print(
             f"Average training time per epoch for {args.optimizer.upper()}: {sum(EPOCH_TRAINING_TIME) / args.epochs} sec"
         )
         print(
-            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)} sec"
+            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)}"
         )
         print(
-            f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / args.epochs} sec"
+            f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / args.epochs}"
         )
     elif args.question == "c7":
         print(
