@@ -10,7 +10,7 @@ import torchvision
 from resnet import ResNet18
 from resnet_nobn import ResNet18_NoBN
 
-if __name__== "__main__":
+if __name__ == "__main__":
     ####################################################################################################################
     # PROVISION FOR ARGUMENTS
     ####################################################################################################################
@@ -24,11 +24,12 @@ if __name__== "__main__":
         default="cpu",
         choices=["gpu", "cpu"],
         required=True,
-        help="specify the compute device: gpu or cpu. If there's no GPU, specifying gpu will default to cpu. ",
+        help=
+        "specify the compute device: gpu or cpu. If there's no GPU, specifying gpu will default to cpu. ",
     )
     parser.add_argument("-dp",
                         "--datapath",
-                        default="./data",
+                        default="data",
                         required=True,
                         help="specify the path to dataset.")
     parser.add_argument("-e",
@@ -88,13 +89,15 @@ if __name__== "__main__":
         help="specify which question to solve",
     )
     args = parser.parse_args()
-
+    print(
+        "=============================================================================================================="
+    )
     print(f"Running the computations for Question: {args.question.upper()}")
-    print("\n")
 
     ####################################################################################################################
     # DATA LOADING
     ####################################################################################################################
+
 
     def transform_data(data):
         if data == "train":
@@ -103,13 +106,13 @@ if __name__== "__main__":
                 torchvision.transforms.RandomHorizontalFlip(),
                 torchvision.transforms.ToTensor(),
                 torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465),
-                                                (0.2023, 0.1994, 0.2010)),
+                                                 (0.2023, 0.1994, 0.2010)),
             ])
         elif data == "test":
             transform = torchvision.transforms.Compose([
                 torchvision.transforms.ToTensor(),
                 torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465),
-                                                (0.2023, 0.1994, 0.2010)),
+                                                 (0.2023, 0.1994, 0.2010)),
             ])
 
         return transform
@@ -134,9 +137,9 @@ if __name__== "__main__":
                                                     shuffle=True,
                                                     num_workers=args.workers)
     test_data_loader = torch.utils.data.DataLoader(test_data,
-                                                batch_size=100,
-                                                shuffle=False,
-                                                num_workers=args.workers)
+                                                   batch_size=100,
+                                                   shuffle=False,
+                                                   num_workers=args.workers)
 
     ####################################################################################################################
     # ARGUMENT HANDLING AND HYPERPARAMETER DIFINITIONS
@@ -178,16 +181,16 @@ if __name__== "__main__":
 
     elif args.optimizer == "adam":
         optimizer = optim.Adam(model.parameters(),
-                            lr=args.learning_rate,
-                            weight_decay=args.weight_decay)
+                               lr=args.learning_rate,
+                               weight_decay=args.weight_decay)
     elif args.optimizer == "adagrad":
         optimizer = optim.Adagrad(model.parameters(),
-                                lr=args.learning_rate,
-                                weight_decay=args.weight_decay)
+                                  lr=args.learning_rate,
+                                  weight_decay=args.weight_decay)
     elif args.optimizer == "adadelta":
         optimizer = optim.Adadelta(model.parameters(),
-                                lr=args.learning_rate,
-                                weight_decay=args.weight_decay)
+                                   lr=args.learning_rate,
+                                   weight_decay=args.weight_decay)
 
     # cross entropy loss
     criterion = nn.CrossEntropyLoss()
@@ -195,43 +198,45 @@ if __name__== "__main__":
     ####################################################################################################################
     # TIMER DEFINITIONS
     ####################################################################################################################
-    epoch_data_loading_time = []
-    epoch_training_time = []
-    epoch_accuracy = []
-    epoch_loss = []
-    total_training_time = 0.0
+    EPOCH_DATA_LOADING_TIME = [0 for _ in range(args.epochs)]
+    EPOCH_TRAINING_TIME = [0 for _ in range(args.epochs)]
+    EPOCH_ACCURACY = [0 for _ in range(args.epochs)]
+    EPOCH_LOSS = [0 for _ in range(args.epochs)]
+    TOTAL_RUNNING_TIME = [0 for _ in range(args.epochs)]
 
     ####################################################################################################################
     # TRAINING LOOP
     ####################################################################################################################
 
-    print(f"Started training using {args.optimizer} optimizer.")
+    print(f"Started training using {args.optimizer.upper()} optimizer.")
 
     # start the total training time counter
-    start_ttt = time.perf_counter()
+    start_running_time_timer = time.perf_counter()
 
     for epoch in range(args.epochs):
 
-        # start the epoch training time timer
-        start_ett = time.perf_counter()
         model.train()
         train_loss = 0
         correct = 0
         total = 0
 
         # start the epoch data loading time timer
-        start_edlt = time.perf_counter()
+        start_epoch_data_loading_timer = time.perf_counter()
 
         for batch_idx, (inputs, targets) in enumerate(train_data_loader):
 
             # end the epoch data loading time timer
-            end_edlt = time.perf_counter()
+            end_epoch_data_loading_timer = time.perf_counter()
 
             # store time to load data in each epoch
-            epoch_data_loading_time.append(end_edlt - start_edlt)
+            EPOCH_DATA_LOADING_TIME[epoch] += (end_epoch_data_loading_timer -
+                                               start_epoch_data_loading_timer)
 
             inputs, targets = inputs.to(device), targets.to(device)
             optimizer.zero_grad()
+
+            # start the epoch training time timer
+            start_epoch_training_timer = time.perf_counter()
 
             # compute predictions, loss & gradients
             outputs = model(inputs)
@@ -241,10 +246,12 @@ if __name__== "__main__":
             # perform gradient descent
             optimizer.step()
 
-            # end the epoch training time timer &
+            # end the epoch training time timer
+            end_epoch_training_timer = time.perf_counter()
+
             # store time to train in each epoch
-            end_ett = time.perf_counter()
-            epoch_training_time.append(end_ett - start_ett)
+            EPOCH_TRAINING_TIME[epoch] += (end_epoch_training_timer -
+                                           start_epoch_training_timer)
 
             # compute loss and accuracy per epch
             train_loss += loss.item()
@@ -252,20 +259,22 @@ if __name__== "__main__":
             total += targets.size(0)
             correct += predicted.eq(targets).sum().item()
 
-        curr_accuracy = 100.0 * correct / total
-        curr_loss = train_loss / (len(train_data_loader) + 1)
+            start_epoch_data_loading_timer = time.perf_counter()
+
+        current_accuracy = 100.0 * correct / total
+        current_loss = train_loss / (len(train_data_loader) + 1)
         # add loss and accuracy of each epoch to an array
-        epoch_accuracy.append(curr_accuracy)
-        epoch_loss.append(curr_loss)
+        EPOCH_ACCURACY.append(current_accuracy)
+        EPOCH_LOSS.append(current_loss)
 
-        print(f"Epoch: {epoch + 1} | Training Loss: {curr_loss: .3f} | Training Accuracy: {curr_accuracy: .3f}")
-
-    print(f"Finished training using {args.optimizer}")
+        print(
+            f"Epoch: {epoch + 1} | Training Loss: {current_loss: .3f} | Training Accuracy: {current_accuracy: .3f}"
+        )
 
     # end the total training time counter
-    end_ttt = time.perf_counter()
-    total_training_time = end_ttt - start_ttt
-
+    end_running_time_timer = time.perf_counter()
+    TOTAL_RUNNING_TIME[epoch] = end_running_time_timer - start_running_time_timer
+    print(f"Finished training using {args.optimizer} optimizer.")
 
     ####################################################################################################################
     # QUESTION WISE COMPUTATIONS
@@ -273,39 +282,36 @@ if __name__== "__main__":
 
     if args.question == "c2":
         # print data loading time and training timme for each epoch
-        for i, (edlt,
-                ett) in enumerate(zip(epoch_data_loading_time,
-                                    epoch_training_time)):
+        for i, (a, b, c) in enumerate(
+                zip(EPOCH_DATA_LOADING_TIME, EPOCH_TRAINING_TIME,
+                    TOTAL_RUNNING_TIME)):
             print(
-                f"Epoch {i+1} | Data Loading Time: {edlt} sec | Epoch {i+1} Training Time: {ett} sec"
+                f"Epoch {i+1} | Data Loading Time: {a} sec | Training Time: {b} sec | Running Time: {c}"
             )
-
-        # print total training time for args.epochs
-        print(f"Total Training Time: {total_training_time} sec")
     elif args.question in ["c3", "c4"]:
         print(
-            f"Total Data loading time for {args.workers} workers: {sum(epoch_data_loading_time)} sec"
+            f"Total Data loading time for {args.workers} workers: {sum(EPOCH_DATA_LOADING_TIME)} sec"
         )
     elif args.question == "c5":
         print(
-            f"Average running time for {args.epochs} epochs on a {args.device.upper()}: {sum(epoch_data_loading_time) / len(epoch_data_loading_time)}"
+            f"Average running time for {args.epochs} epochs on a {args.device.upper()}: {sum(EPOCH_DATA_LOADING_TIME) / len(EPOCH_DATA_LOADING_TIME)}"
         )
     elif args.question == "c6":
         print(
-            f"Average training time per epoch for {args.optimizer.upper()}: {sum(epoch_data_loading_time) / len(epoch_data_loading_time)} sec"
+            f"Average training time per epoch for {args.optimizer.upper()}: {sum(EPOCH_DATA_LOADING_TIME) / len(EPOCH_DATA_LOADING_TIME)} sec"
         )
         print(
-            f"Average loss per epoch for {args.optimizer.upper()}: {sum(epoch_accuracy) / len(epoch_accuracy)} sec"
+            f"Average loss per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / len(EPOCH_ACCURACY)} sec"
         )
         print(
-            f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(epoch_loss) / len(epoch_loss)} sec"
+            f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)} sec"
         )
     elif args.question == "c7":
         print(
-            f"Average training loss per epoch without batch normalization layers: {sum(epoch_accuracy) / len(epoch_accuracy)}"
+            f"Average training loss per epoch without batch normalization layers: {sum(EPOCH_LOSS) / len(EPOCH_LOSS)}"
         )
         print(
-            f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(epoch_loss) / len(epoch_loss)}"
+            f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(EPOCH_ACCURACY) / len(EPOCH_ACCURACY)}"
         )
 
     print("\n\n")
