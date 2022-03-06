@@ -314,4 +314,4 @@ if __name__ == "__main__":
             f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(EPOCH_ACCURACY) / len(EPOCH_ACCURACY)}"
         )
 
-    print("\n\n")
+print("\n")
