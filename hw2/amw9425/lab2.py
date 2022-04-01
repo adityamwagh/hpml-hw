@@ -12,7 +12,6 @@ from resnet_nobn import ResNet18_NoBN
 
 if __name__ == "__main__":
 
-    
     ####################################################################################################################
     # PROVISION FOR ARGUMENTS
     ####################################################################################################################
@@ -105,18 +104,14 @@ if __name__ == "__main__":
                     torchvision.transforms.RandomCrop(32, padding=4),
                     torchvision.transforms.RandomHorizontalFlip(),
                     torchvision.transforms.ToTensor(),
-                    torchvision.transforms.Normalize(
-                        (0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)
-                    ),
+                    torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
                 ]
             )
         elif data == "test":
             transform = torchvision.transforms.Compose(
                 [
                     torchvision.transforms.ToTensor(),
-                    torchvision.transforms.Normalize(
-                        (0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)
-                    ),
+                    torchvision.transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
                 ]
             )
 
@@ -137,12 +132,8 @@ if __name__ == "__main__":
     )
 
     # define dataloaders
-    train_data_loader = torch.utils.data.DataLoader(
-        train_data, batch_size=128, shuffle=True, num_workers=args.workers
-    )
-    test_data_loader = torch.utils.data.DataLoader(
-        test_data, batch_size=100, shuffle=False, num_workers=args.workers
-    )
+    train_data_loader = torch.utils.data.DataLoader(train_data, batch_size=128, shuffle=True, num_workers=args.workers)
+    test_data_loader = torch.utils.data.DataLoader(test_data, batch_size=100, shuffle=False, num_workers=args.workers)
 
     ####################################################################################################################
     # ARGUMENT HANDLING AND HYPERPARAMETER DIFINITIONS
@@ -181,19 +172,14 @@ if __name__ == "__main__":
         )
 
     elif args.optimizer == "adam":
-        optimizer = optim.Adam(
-            model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+        optimizer = optim.Adam(model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
     elif args.optimizer == "adagrad":
-        optimizer = optim.Adagrad(
-            model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay
-        )
+        optimizer = optim.Adagrad(model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
     elif args.optimizer == "adadelta":
-        optimizer = optim.Adadelta(
-            model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay
-        )
+        optimizer = optim.Adadelta(model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
 
     # selecting the loss function
-    criterion = nn.CrossEntropyLoss()
+    loss_fn = nn.CrossEntropyLoss()
 
     ####################################################################################################################
     # TIMER DEFINITIONS
@@ -229,7 +215,7 @@ if __name__ == "__main__":
             end_epoch_data_loading_timer = time.perf_counter()
 
             # store time to load data in each epoch
-            EPOCH_DATA_LOADING_TIME[epoch] += (end_epoch_data_loading_timer - start_epoch_data_loading_timer)
+            EPOCH_DATA_LOADING_TIME[epoch] += end_epoch_data_loading_timer - start_epoch_data_loading_timer
 
             inputs, targets = inputs.to(device), targets.to(device)
             optimizer.zero_grad()
@@ -239,7 +225,7 @@ if __name__ == "__main__":
 
             # compute predictions, loss & gradients
             outputs = model(inputs)
-            loss = criterion(outputs, targets)
+            loss = loss_fn(outputs, targets)
             loss.backward()
 
             # perform gradient descent
@@ -249,7 +235,7 @@ if __name__ == "__main__":
             end_epoch_training_timer = time.perf_counter()
 
             # store time to train in each epoch
-            EPOCH_TRAINING_TIME[epoch] += (end_epoch_training_timer - start_epoch_training_timer)
+            EPOCH_TRAINING_TIME[epoch] += end_epoch_training_timer - start_epoch_training_timer
 
             # compute loss and accuracy per epch
             train_loss += loss.item()
@@ -299,7 +285,7 @@ if __name__ == "__main__":
         print(f"Average top-1 training per epoch for {args.optimizer.upper()}: {sum(EPOCH_ACCURACY) / args.epochs}")
 
     elif args.question == "c7":
-        print( f"Average training loss per epoch without batch normalization layers: {sum(EPOCH_LOSS) / args.epochs}")
+        print(f"Average training loss per epoch without batch normalization layers: {sum(EPOCH_LOSS) / args.epochs}")
         print(f"Average top-1 training accuracy per epoch without batch normalization layers: {sum(EPOCH_ACCURACY) / args.epochs}")
 
     ####################################################################################################################

@@ -1,7 +1,11 @@
 *.ini
 data/
 .vscode/
-
+~WRL3752.tmp
+*.docx
+MNIST/
+FashionMNIST/
+CIFAR10/
 # Prerequisites
 *.d
 
