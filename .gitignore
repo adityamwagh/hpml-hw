@@ -1,6 +1,6 @@
-*.ini
 data/
 .vscode/
+.vscode/*
 ~WRL3752.tmp
 *.docx
 MNIST/
