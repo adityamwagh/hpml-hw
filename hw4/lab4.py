@@ -80,7 +80,7 @@ def main():
     train_data_loader = torch.utils.data.DataLoader(train_data, batch_size=args.num_devices * args.batch_size, shuffle=True, num_workers=args.workers)
 
     ####################################################################################################################
-    # ARGUMENT HANDLING AND HYPERPARAMETER DIFINITIONS
+    # ARGUENT HANDLING AND HYPERPARAMETER DIFINITIONS
     ####################################################################################################################
     device = "cuda" if torch.cuda.is_available else "cpu"
     model = ResNet18()
@@ -99,14 +99,14 @@ def main():
     loss_fn = nn.CrossEntropyLoss()
 
     ####################################################################################################################
-    # TIMER DEFINITIONS
+    # TIER DEFINITIONS
     ####################################################################################################################
 
-    EPOCH_DATA_LOADING_TIME = [0 for _ in range(args.epochs)]
-    EPOCH_TRAINING_TIME = [0 for _ in range(args.epochs)]
+    EPOCH_DATA_LOADING_TIE = [0 for _ in range(args.epochs)]
+    EPOCH_TRAINING_TIE = [0 for _ in range(args.epochs)]
     EPOCH_ACCURACY = [0 for _ in range(args.epochs)]
     EPOCH_LOSS = [0 for _ in range(args.epochs)]
-    TOTAL_RUNNING_TIME = [0 for _ in range(args.epochs)]
+    TOTAL_RUNNING_TIE = [0 for _ in range(args.epochs)]
 
     ####################################################################################################################
     # TRAINING LOOP
@@ -133,7 +133,7 @@ def main():
             end_epoch_data_loading_timer = time.perf_counter()
 
             # store time to load data in each epoch
-            EPOCH_DATA_LOADING_TIME[epoch] += end_epoch_data_loading_timer - start_epoch_data_loading_timer
+            EPOCH_DATA_LOADING_TIE[epoch] += end_epoch_data_loading_timer - start_epoch_data_loading_timer
 
             # start the epoch training time timer
             start_epoch_training_timer = time.perf_counter()
@@ -150,7 +150,7 @@ def main():
             end_epoch_training_timer = time.perf_counter()
 
             # store time to train in each epoch
-            EPOCH_TRAINING_TIME[epoch] += end_epoch_training_timer - start_epoch_training_timer
+            EPOCH_TRAINING_TIE[epoch] += end_epoch_training_timer - start_epoch_training_timer
 
             # compute loss and accuracy per epch
             train_loss += loss.item()
@@ -167,7 +167,7 @@ def main():
         end_running_time_timer = time.perf_counter()
 
         # store the total running time for each epoch
-        TOTAL_RUNNING_TIME[epoch] += end_running_time_timer - start_running_time_timer
+        TOTAL_RUNNING_TIE[epoch] += end_running_time_timer - start_running_time_timer
 
         # add loss and accuracy of each epoch to an array
         EPOCH_ACCURACY[epoch] = current_accuracy
@@ -179,8 +179,8 @@ def main():
     print("Finished training using SGD optimizer.")
 
     # compute required time values
-    print(f"Training Time: {EPOCH_TRAINING_TIME[-1]}(s)")
-    print(f"Total Time: {EPOCH_DATA_LOADING_TIME[-1] + EPOCH_TRAINING_TIME[-1]}(s)")
+    print(f"Training Time: {EPOCH_TRAINING_TIE[-1]}(s)")
+    print(f"Total Time: {EPOCH_DATA_LOADING_TIE[-1] + EPOCH_TRAINING_TIME[-1]}(s)")
 
 
 if __name__ == "__main__":
