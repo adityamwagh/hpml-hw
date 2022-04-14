@@ -14,7 +14,7 @@ def get_arguments():
 
     parser = argparse.ArgumentParser(description="Train a ResNet-18 model on CIFAR10 using PyTorch")
 
-    parser.add_argument("-ndev", "--num-devices", required=True, help="specify number of gpus")
+    parser.add_argument("-ndev", "--num-devices", type=int, required=True, help="specify number of gpus")
     parser.add_argument("-dp", "--datapath", default="data", help="specify the path to the dataset folder")
     parser.add_argument("-e", "--epochs", required=True, type=int, help="specify the number of epochs to train for")
     parser.add_argument("-d", "--device", default="gpu", choices=["gpu", "cpu"], required=False, help="specify the compute device: gpu or cpu")
@@ -28,6 +28,7 @@ def get_arguments():
 
 
 def transform_data(data):
+    
     if data == "train":
         transform = torchvision.transforms.Compose(
             [
@@ -49,6 +50,7 @@ def transform_data(data):
 
 
 def get_data(path):
+
     # download training data
     train_data = torchvision.datasets.CIFAR10(
         root=path,
@@ -72,33 +74,22 @@ def main():
     args = get_arguments()
 
     # download data
-    train_data, test_data = get_data(args.datapath)
+    train_data, _ = get_data(args.datapath)
 
-    # define dataloaders
-    train_data_loader = torch.utils.data.DataLoader(train_data, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
-    test_data_loader = torch.utils.data.DataLoader(test_data, batch_size=args.batch_size, shuffle=True, num_workers=args.workers)
+    # define train
+    train_data_loader = torch.utils.data.DataLoader(train_data, batch_size=args.num_devices * args.batch_size, shuffle=True, num_workers=args.workers)
 
     ####################################################################################################################
     # ARGUMENT HANDLING AND HYPERPARAMETER DIFINITIONS
     ####################################################################################################################
-    device = None
-
-    # set the device for computation
-    if args.device == "gpu":
-        if torch.cuda.is_available():
-            print(f"GPU is available. Training on {torch.cuda.get_device_name()}")
-            device = "cuda"
-    else:
-        device = "cpu"
-
-    # choose model according to batchnorm specification
+    device = "cuda"
     if args.num_devices == "1":
-        model = torch.nn.DataParallel(ResNet18(), device_ids=[0]).to(device)
+        model = ResNet18().to(device)
     elif args.num_devices == "2":
-        model = torch.nn.DataParallel(ResNet18(), device_ids=[0, 1]).to(device)
+        model = torch.nn.DataParallel(ResNet18(), device_ids=[0, 1])
     elif args.num_devices == "4":
-        model = torch.nn.DataParallel(ResNet18(), device_ids=[0, 1, 2, 3]).to(device)
-
+        model = torch.nn.DataParallel(ResNet18(), device_ids=[0, 1, 2, 3])
+    
     # get optimizer arguments
     optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
 
@@ -108,6 +99,7 @@ def main():
     ####################################################################################################################
     # TIMER DEFINITIONS
     ####################################################################################################################
+    
     EPOCH_DATA_LOADING_TIME = [0 for _ in range(args.epochs)]
     EPOCH_TRAINING_TIME = [0 for _ in range(args.epochs)]
     EPOCH_ACCURACY = [0 for _ in range(args.epochs)]
@@ -183,6 +175,10 @@ def main():
         print(f"Epoch: {epoch + 1} | Training Loss: {current_loss: .3f} | Training Accuracy: {current_accuracy: .3f}")
 
     print("Finished training using SGD optimizer.")
+
+    # compute required time values
+    print(f"Training Time: {EPOCH_TRAINING_TIME[-1]}(s)")
+    print(f"Total Time: {EPOCH_DATA_LOADING_TIME[-1] + EPOCH_TRAINING_TIME[-1]}(s)")
 
 
 if __name__ == "__main__":
