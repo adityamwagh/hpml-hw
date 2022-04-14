@@ -1,0 +1,195 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.896 | Training Accuracy:  30.608
+Epoch: 2 | Training Loss:  1.467 | Training Accuracy:  46.308
+Finished training using SGD optimizer.
+Training Time: 18.029186747036874(s)
+Total Time: 19.405602189712226(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.784 | Training Accuracy:  34.630
+Epoch: 2 | Training Loss:  1.286 | Training Accuracy:  53.182
+Finished training using SGD optimizer.
+Training Time: 5.857462887652218(s)
+Total Time: 6.47195315733552(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.920 | Training Accuracy:  30.588
+Epoch: 2 | Training Loss:  1.443 | Training Accuracy:  46.148
+Finished training using SGD optimizer.
+Training Time: 1.6387961255386472(s)
+Total Time: 2.061318743042648(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.971 | Training Accuracy:  13.100
+Epoch: 2 | Training Loss:  2.133 | Training Accuracy:  18.770
+Finished training using SGD optimizer.
+Training Time: 0.6135078221559525(s)
+Total Time: 1.3569415528327227(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 190, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 145, in main
+    outputs = model(inputs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/amw9425/hpml-hw/hw4/resnet.py", line 70, in forward
+    out = self.layer2(out)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/amw9425/hpml-hw/hw4/resnet.py", line 42, in forward
+    out = F.relu(out)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/functional.py", line 1299, in relu
+    result = torch.relu(input)
+RuntimeError: CUDA out of memory. Tried to allocate 1024.00 MiB (GPU 0; 31.75 GiB total capacity; 29.14 GiB already allocated; 527.50 MiB free; 29.66 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.872 | Training Accuracy:  31.342
+Epoch: 2 | Training Loss:  1.337 | Training Accuracy:  51.378
+Finished training using SGD optimizer.
+Training Time: 21.52040763106197(s)
+Total Time: 22.533726943656802(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.189 | Training Accuracy:  26.666
+Epoch: 2 | Training Loss:  1.576 | Training Accuracy:  41.074
+Finished training using SGD optimizer.
+Training Time: 5.761781821958721(s)
+Total Time: 6.202677226625383(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.185 | Training Accuracy:  23.814
+Epoch: 2 | Training Loss:  1.593 | Training Accuracy:  39.092
+Finished training using SGD optimizer.
+Training Time: 1.5850887652486563(s)
+Total Time: 2.12604926712811(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.811 | Training Accuracy:  15.466
+Epoch: 2 | Training Loss:  1.974 | Training Accuracy:  21.480
+Finished training using SGD optimizer.
+Training Time: 0.5962272984907031(s)
+Total Time: 1.8681178390979767(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 190, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 145, in main
+    outputs = model(inputs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 168, in forward
+    outputs = self.parallel_apply(replicas, inputs, kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 178, in parallel_apply
+    return parallel_apply(replicas, inputs, kwargs, self.device_ids[:len(replicas)])
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 86, in parallel_apply
+    output.reraise()
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/_utils.py", line 434, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in replica 0 on device 0.
+Original Traceback (most recent call last):
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 61, in _worker
+    output = module(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/amw9425/hpml-hw/hw4/resnet.py", line 70, in forward
+    out = self.layer2(out)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/amw9425/hpml-hw/hw4/resnet.py", line 42, in forward
+    out = F.relu(out)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/functional.py", line 1299, in relu
+    result = torch.relu(input)
+RuntimeError: CUDA out of memory. Tried to allocate 1024.00 MiB (GPU 0; 31.75 GiB total capacity; 29.23 GiB already allocated; 431.50 MiB free; 29.76 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.218 | Training Accuracy:  21.136
+Epoch: 2 | Training Loss:  1.596 | Training Accuracy:  40.416
+Finished training using SGD optimizer.
+Training Time: 12.964061831124127(s)
+Total Time: 13.679867438040674(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  1.958 | Training Accuracy:  29.274
+Epoch: 2 | Training Loss:  1.409 | Training Accuracy:  46.952
+Finished training using SGD optimizer.
+Training Time: 3.6031251223757863(s)
+Total Time: 4.085379648953676(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.513 | Training Accuracy:  18.474
+Epoch: 2 | Training Loss:  1.734 | Training Accuracy:  31.256
+Finished training using SGD optimizer.
+Training Time: 1.1779169794172049(s)
+Total Time: 3.069889238104224(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Epoch: 1 | Training Loss:  2.866 | Training Accuracy:  14.486
+Epoch: 2 | Training Loss:  3.318 | Training Accuracy:  14.126
+Finished training using SGD optimizer.
+Training Time: 0.48073907010257244(s)
+Total Time: 3.801691733300686(s)
+Files already downloaded and verified
+Files already downloaded and verified
+Started training using SGD optimizer.
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 190, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 145, in main
+    outputs = model(inputs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 168, in forward
+    outputs = self.parallel_apply(replicas, inputs, kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 178, in parallel_apply
+    return parallel_apply(replicas, inputs, kwargs, self.device_ids[:len(replicas)])
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 86, in parallel_apply
+    output.reraise()
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/_utils.py", line 434, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in replica 0 on device 0.
+Original Traceback (most recent call last):
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 61, in _worker
+    output = module(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/amw9425/hpml-hw/hw4/resnet.py", line 70, in forward
+    out = self.layer2(out)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/scratch/amw9425/hpml-hw/hw4/resnet.py", line 42, in forward
+    out = F.relu(out)
+  File "/ext3/miniconda3/lib/python3.9/site-packages/torch/nn/functional.py", line 1299, in relu
+    result = torch.relu(input)
+RuntimeError: CUDA out of memory. Tried to allocate 1024.00 MiB (GPU 0; 31.75 GiB total capacity; 29.42 GiB already allocated; 237.50 MiB free; 29.95 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
