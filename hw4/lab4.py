@@ -28,7 +28,7 @@ def get_arguments():
 
 
 def transform_data(data):
-    
+
     if data == "train":
         transform = torchvision.transforms.Compose(
             [
@@ -82,14 +82,16 @@ def main():
     ####################################################################################################################
     # ARGUMENT HANDLING AND HYPERPARAMETER DIFINITIONS
     ####################################################################################################################
-    device = "cuda"
-    if args.num_devices == "1":
-        model = ResNet18().to(device)
-    elif args.num_devices == "2":
-        model = torch.nn.DataParallel(ResNet18(), device_ids=[0, 1])
-    elif args.num_devices == "4":
-        model = torch.nn.DataParallel(ResNet18(), device_ids=[0, 1, 2, 3])
-    
+    device = "cuda" if torch.cuda.is_available else "cpu"
+    model = ResNet18()
+
+    if args.num_devices == 1:
+        model = model.to(device)
+    elif args.num_devices == 2:
+        model = torch.nn.DataParallel(model, device_ids=[0, 1])
+    elif args.num_devices == 4:
+        model = torch.nn.DataParallel(model, device_ids=[0, 1, 2, 3])
+
     # get optimizer arguments
     optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
 
@@ -99,7 +101,7 @@ def main():
     ####################################################################################################################
     # TIMER DEFINITIONS
     ####################################################################################################################
-    
+
     EPOCH_DATA_LOADING_TIME = [0 for _ in range(args.epochs)]
     EPOCH_TRAINING_TIME = [0 for _ in range(args.epochs)]
     EPOCH_ACCURACY = [0 for _ in range(args.epochs)]
