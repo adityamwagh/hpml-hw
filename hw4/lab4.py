@@ -114,7 +114,10 @@ def main():
     # TRAINING LOOP
     ####################################################################################################################
 
+    print("\n")
     print("Started training using SGD optimizer.")
+    print(f"Batch size per GPU: {args.batch_size}")
+    print(f"Effective Batch Size: {args.num_devices * args.batch_size}")
 
     for epoch in range(args.epochs):
 

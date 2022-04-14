@@ -75,3 +75,8 @@ singularity exec --nv \
 singularity exec --nv \
 --overlay /scratch/amw9425/images/pytorch/my_pytorch.ext3:ro \
 /scratch/work/public/singularity/cuda11.3.0-cudnn8-devel-ubuntu20.04.sif /bin/bash -c "source /ext3/env.sh; python lab4.py -ndev 4 -e 2 -bs 8192"
+
+# Q4 5 epochs
+singularity exec --nv \
+--overlay /scratch/amw9425/images/pytorch/my_pytorch.ext3:ro \
+/scratch/work/public/singularity/cuda11.3.0-cudnn8-devel-ubuntu20.04.sif /bin/bash -c "source /ext3/env.sh; python lab4.py -ndev 4 -e 5 -bs 8192"
