@@ -1,0 +1,122 @@
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to data/cifar-10-python.tar.gz
+  0%|          | 0/170498071 [00:00<?, ?it/s]  2%|▏         | 3245056/170498071 [00:00<00:05, 32449430.46it/s]  7%|▋         | 11736064/170498071 [00:00<00:02, 63307341.43it/s] 12%|█▏        | 20169728/170498071 [00:00<00:02, 72903933.15it/s] 17%|█▋        | 28820480/170498071 [00:00<00:01, 78242464.23it/s] 22%|██▏       | 37159936/170498071 [00:00<00:01, 80090671.26it/s] 27%|██▋       | 45548544/170498071 [00:00<00:01, 81372943.59it/s] 32%|███▏      | 53983232/170498071 [00:00<00:01, 82344915.40it/s] 37%|███▋      | 62325760/170498071 [00:00<00:01, 82684113.19it/s] 41%|████▏     | 70594560/170498071 [00:00<00:01, 82663299.16it/s] 46%|████▋     | 79250432/170498071 [00:01<00:01, 83851996.22it/s] 51%|█████▏    | 87635968/170498071 [00:01<00:01, 82808882.92it/s] 56%|█████▋    | 95920128/170498071 [00:01<00:00, 81743644.09it/s] 61%|██████▏   | 104465408/170498071 [00:01<00:00, 82836931.78it/s] 66%|██████▋   | 113026048/170498071 [00:01<00:00, 83661790.73it/s] 71%|███████▏  | 121556992/170498071 [00:01<00:00, 84154087.96it/s] 77%|███████▋  | 130434048/170498071 [00:01<00:00, 85529541.52it/s] 83%|████████▎ | 140805120/170498071 [00:01<00:00, 90957848.14it/s] 89%|████████▊ | 150996992/170498071 [00:01<00:00, 93988212.65it/s] 95%|█████████▌| 162022400/170498071 [00:01<00:00, 98833156.56it/s]170499072it [00:01, 85661976.49it/s]                               
+Extracting data/cifar-10-python.tar.gz to data
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
+Files already downloaded and verified
+Files already downloaded and verified
+Traceback (most recent call last):
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 186, in <module>
+    main()
+  File "/scratch/amw9425/hpml-hw/hw4/lab4.py", line 94, in main
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=args.momentum, weight_decay=args.weight_decay, nesterov=False)
+UnboundLocalError: local variable 'model' referenced before assignment
