@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=hw2_computations
+#SBATCH --job-name=hw4_v100_computations
 #SBATCH --time=1:00:00
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
