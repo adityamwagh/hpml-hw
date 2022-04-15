@@ -1,0 +1,195 @@
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 32
+Effective Batch Size: 32
+Epoch: 1 | Training Loss:  1.835 | Training Accuracy:  33.210
+Epoch: 2 | Training Loss:  1.355 | Training Accuracy:  51.018
+Finished training using SGD optimizer.
+Training Time: 14.920354712521657(s)
+Total Time: 16.047822877764702(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 128
+Effective Batch Size: 128
+Epoch: 1 | Training Loss:  2.040 | Training Accuracy:  27.778
+Epoch: 2 | Training Loss:  1.582 | Training Accuracy:  41.868
+Finished training using SGD optimizer.
+Training Time: 3.887580065988004(s)
+Total Time: 4.341575586469844(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 512
+Effective Batch Size: 512
+Epoch: 1 | Training Loss:  2.047 | Training Accuracy:  27.288
+Epoch: 2 | Training Loss:  1.503 | Training Accuracy:  43.298
+Finished training using SGD optimizer.
+Training Time: 1.1585236529354006(s)
+Total Time: 1.5882705841213465(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 2048
+Effective Batch Size: 2048
+Epoch: 1 | Training Loss:  3.460 | Training Accuracy:  12.600
+Epoch: 2 | Training Loss:  2.074 | Training Accuracy:  20.032
+Finished training using SGD optimizer.
+Training Time: 0.5569667762611061(s)
+Total Time: 1.3481737817637622(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 8192
+Effective Batch Size: 8192
+Epoch: 1 | Training Loss:  3.147 | Training Accuracy:  14.636
+Epoch: 2 | Training Loss:  4.296 | Training Accuracy:  11.120
+Finished training using SGD optimizer.
+Training Time: 0.29476291011087596(s)
+Total Time: 2.7618906749412417(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 32
+Effective Batch Size: 64
+Epoch: 1 | Training Loss:  1.887 | Training Accuracy:  32.078
+Epoch: 2 | Training Loss:  1.465 | Training Accuracy:  46.236
+Finished training using SGD optimizer.
+Training Time: 12.379106623586267(s)
+Total Time: 13.097857681801543(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 128
+Effective Batch Size: 256
+Epoch: 1 | Training Loss:  2.120 | Training Accuracy:  26.634
+Epoch: 2 | Training Loss:  1.477 | Training Accuracy:  44.782
+Finished training using SGD optimizer.
+Training Time: 3.2660406169015914(s)
+Total Time: 3.680909290909767(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 512
+Effective Batch Size: 1024
+Epoch: 1 | Training Loss:  2.070 | Training Accuracy:  27.002
+Epoch: 2 | Training Loss:  1.483 | Training Accuracy:  43.720
+Finished training using SGD optimizer.
+Training Time: 0.9851146936416626(s)
+Total Time: 1.5409337172750384(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 2048
+Effective Batch Size: 4096
+Epoch: 1 | Training Loss:  2.559 | Training Accuracy:  15.884
+Epoch: 2 | Training Loss:  1.985 | Training Accuracy:  21.662
+Finished training using SGD optimizer.
+Training Time: 0.4817861686460674(s)
+Total Time: 1.838242181809619(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 8192
+Effective Batch Size: 16384
+Epoch: 1 | Training Loss:  2.166 | Training Accuracy:  14.872
+Epoch: 2 | Training Loss:  3.254 | Training Accuracy:  14.116
+Finished training using SGD optimizer.
+Training Time: 0.2965889999177307(s)
+Total Time: 4.984561373945326(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 32
+Effective Batch Size: 128
+Epoch: 1 | Training Loss:  2.079 | Training Accuracy:  26.058
+Epoch: 2 | Training Loss:  1.568 | Training Accuracy:  42.144
+Finished training using SGD optimizer.
+Training Time: 8.46727651078254(s)
+Total Time: 9.006054340628907(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 128
+Effective Batch Size: 512
+Epoch: 1 | Training Loss:  2.099 | Training Accuracy:  26.182
+Epoch: 2 | Training Loss:  1.552 | Training Accuracy:  41.660
+Finished training using SGD optimizer.
+Training Time: 2.316297555807978(s)
+Total Time: 2.734425982227549(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 512
+Effective Batch Size: 2048
+Epoch: 1 | Training Loss:  3.257 | Training Accuracy:  13.572
+Epoch: 2 | Training Loss:  2.032 | Training Accuracy:  21.092
+Finished training using SGD optimizer.
+Training Time: 0.7947058279532939(s)
+Total Time: 2.7108116515446454(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 2048
+Effective Batch Size: 8192
+Epoch: 1 | Training Loss:  2.953 | Training Accuracy:  15.436
+Epoch: 2 | Training Loss:  2.979 | Training Accuracy:  13.610
+Finished training using SGD optimizer.
+Training Time: 0.4071154831908643(s)
+Total Time: 2.9051865530200303(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 8192
+Effective Batch Size: 32768
+Epoch: 1 | Training Loss:  1.762 | Training Accuracy:  11.650
+Epoch: 2 | Training Loss:  2.178 | Training Accuracy:  17.864
+Finished training using SGD optimizer.
+Training Time: 1.5865933569148183(s)
+Total Time: 10.793453647987917(s)
+Files already downloaded and verified
+Files already downloaded and verified
+
+
+Started training using SGD optimizer.
+Batch size per GPU: 8192
+Effective Batch Size: 32768
+Epoch: 1 | Training Loss:  1.663 | Training Accuracy:  13.418
+Epoch: 2 | Training Loss:  1.891 | Training Accuracy:  18.020
+Epoch: 3 | Training Loss:  2.687 | Training Accuracy:  18.578
+Epoch: 4 | Training Loss:  3.191 | Training Accuracy:  17.106
+Epoch: 5 | Training Loss:  2.878 | Training Accuracy:  12.640
+Finished training using SGD optimizer.
+Training Time: 0.26891654590144753(s)
+Total Time: 9.44351214170456(s)
