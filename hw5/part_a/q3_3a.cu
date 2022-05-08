@@ -1,13 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <iomanip>
 #include <time.h>
 #include <math.h>
 
 // function to add the elements of two arrays
 __global__
 void add(long long n, float* x, float* y)
-{
-    for (int i = 0; i < n; i++)
+{   int index = blockIdx.x * blockDim.x + threadIdx.x;
+    int stride = blockDim.x * gridDim.x;
+    for (int i = index; i < n; i+=stride)
         y[i] = x[i] + y[i];
 }
 
@@ -19,41 +20,42 @@ int main(int argc, char* argv[]) {
     // defining constants for division
     const double BILLION = 1000000000.0;
     double execTime = 0;
+    size_t size = K * sizeof(float);
 
-    // initialize and populate arrays
-    float* A = (float*)malloc(K * sizeof(float));
-    float* B = (float*)malloc(K * sizeof(float));
+    // Allocate vectors in unified memory
+    float *x, *y;
+    cudaMallocManaged(&x, size);
+    cudaMallocManaged(&y, size);
+
+    // allocate on host
     for (int i = 0; i < K; ++i) {
-        hx[i] = 1.0f;
-        hy[i] = 1.0f;
+        x[i] = 1.0f;
+        y[i] = 1.0f;
     }
 
     // define blocksize and number of threads/block
-    int blockSize = 256;
+    int blockSize = 1;
     int numBlocks = 1;
 
-    // initialize timers
     struct timespec start, end;
 
     // start timer
     clock_gettime(CLOCK_MONOTONIC, &start);
-
-    // multiple blocks, 256 threads/block
-    add << <numBlocks, blockSize >> > (K, dx, dy);
+    
+    add <<<numBlocks, blockSize>>> (K, x, y);
 
     // stop timer
     clock_gettime(CLOCK_MONOTONIC, &end);
-
-    // compute time in seconds
     execTime = ((double)end.tv_sec - (double)start.tv_sec) + (((double)end.tv_nsec - (double)start.tv_nsec) / BILLION);
-
-    std::cout << "Execution Time: " << execTime << std::endl;
+    cudaDeviceSynchronize();
 
     // free the memory
-    cudaFree(A);
-    cudaFree(B);
+    cudaFree(x);
+    cudaFree(y);
 
-    // return
-    return 0;
+    std::cout << "Time to execute add: " << execTime  << "sec" << std::endl;
+    std::cout << "Number of elements: " << argv[1]  << "M" << std::endl;
+  
+  return 0;
 
 }

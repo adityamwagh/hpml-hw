@@ -1,0 +1,8 @@
+BasedOnStyle: Google
+Language: Cpp
+Standard: Cpp17
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignTrailingComments: true
+AlignAfterOpenBracket: true
+ColumnLimit: 96

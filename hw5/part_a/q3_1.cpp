@@ -26,7 +26,6 @@ int main(int argc, char *argv[]) {
     hy[i] = 1.0;
   }
 
-  // initialize timers
   struct timespec start, end;
 
   // start timer
@@ -36,17 +35,16 @@ int main(int argc, char *argv[]) {
 
   // stop timer
   clock_gettime(CLOCK_MONOTONIC, &end);
-
-  // compute time in seconds
   execTime = ((double)end.tv_sec - (double)start.tv_sec) +
              (((double)end.tv_nsec - (double)start.tv_nsec) / BILLION);
-
-  std::cout << "Execution Time: " << execTime << std::endl;
 
   // free the memory
   free(hx);
   free(hy);
 
   // return
+  std::cout << "Time to execute add: " << execTime << "sec" << std::endl;
+  std::cout << "Number of elements: " << argv[1] << "M" << std::endl;
+
   return 0;
 }

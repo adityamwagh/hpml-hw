@@ -78,6 +78,8 @@ int main(int argc, char* argv[]) {
   free(B);
 
   // return
+  std::cout << "Number of elements: " << argv[1]  << "M" << std::endl;
+  
   return 0;
 
 }
