@@ -1,0 +1,762 @@
+g++ -O3 -Wall q3_1.cpp -o q3_1.o
+TIMEFORMAT='%3R';
+time ./q3_1.o 1
+Time to execute add: 0.000303316sec
+Number of elements: 1M
+0.00user 0.00system 0:00.00elapsed 100%CPU (0avgtext+0avgdata 10692maxresident)k
+0inputs+0outputs (0major+2094minor)pagefaults 0swaps
+time ./q3_1.o 5
+Time to execute add: 0.00220746sec
+Number of elements: 5M
+0.00user 0.01system 0:00.02elapsed 100%CPU (0avgtext+0avgdata 42076maxresident)k
+0inputs+0outputs (0major+9907minor)pagefaults 0swaps
+time ./q3_1.o 10
+Time to execute add: 0.0052726sec
+Number of elements: 10M
+0.01user 0.03system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 80980maxresident)k
+0inputs+0outputs (0major+19671minor)pagefaults 0swaps
+time ./q3_1.o 50
+Time to execute add: 0.0315416sec
+Number of elements: 50M
+0.05user 0.17system 0:00.22elapsed 99%CPU (0avgtext+0avgdata 393464maxresident)k
+0inputs+0outputs (0major+97797minor)pagefaults 0swaps
+time ./q3_1.o 100
+Time to execute add: 0.0639704sec
+Number of elements: 100M
+0.11user 0.33system 0:00.45elapsed 99%CPU (0avgtext+0avgdata 784040maxresident)k
+0inputs+0outputs (0major+195453minor)pagefaults 0swaps
+echo "\n"
+
+
+nvcc q3_2a.cu -o q3_2a.o
+TIMEFORMAT='%3R';
+nvprof ./q3_2a.o 1
+==1645687== NVPROF is profiling process 1645687, command: ./q3_2a.o 1
+Time to execute add: 5.0255e-05sec
+Number of elements: 1M
+==1645687== Profiling application: ./q3_2a.o 1
+==1645687== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   97.92%  92.203ms         1  92.203ms  92.203ms  92.203ms  add(__int64, float*, float*)
+                    1.46%  1.3790ms         2  689.49us  688.03us  690.94us  [CUDA memcpy HtoD]
+                    0.62%  583.33us         1  583.33us  583.33us  583.33us  [CUDA memcpy DtoH]
+      API calls:   67.39%  199.37ms         2  99.683ms  112.01us  199.25ms  cudaMalloc
+                   32.07%  94.893ms         3  31.631ms  877.33us  93.122ms  cudaMemcpy
+                    0.30%  899.74us         1  899.74us  899.74us  899.74us  cuDeviceTotalMem
+                    0.12%  340.85us         2  170.43us  165.82us  175.04us  cudaFree
+                    0.09%  279.53us       101  2.7670us     114ns  123.41us  cuDeviceGetAttribute
+                    0.01%  36.117us         1  36.117us  36.117us  36.117us  cuDeviceGetName
+                    0.01%  30.106us         1  30.106us  30.106us  30.106us  cudaLaunchKernel
+                    0.00%  5.1730us         1  5.1730us  5.1730us  5.1730us  cuDeviceGetPCIBusId
+                    0.00%     879ns         3     293ns     148ns     579ns  cuDeviceGetCount
+                    0.00%     710ns         2     355ns     151ns     559ns  cuDeviceGet
+                    0.00%     249ns         1     249ns     249ns     249ns  cuDeviceGetUuid
+nvprof ./q3_2a.o 5
+==1645700== NVPROF is profiling process 1645700, command: ./q3_2a.o 5
+Time to execute add: 3.5494e-05sec
+Number of elements: 5M
+==1645700== Profiling application: ./q3_2a.o 5
+==1645700== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   97.02%  391.75ms         1  391.75ms  391.75ms  391.75ms  add(__int64, float*, float*)
+                    2.00%  8.0732ms         2  4.0366ms  4.0352ms  4.0379ms  [CUDA memcpy HtoD]
+                    0.98%  3.9464ms         1  3.9464ms  3.9464ms  3.9464ms  [CUDA memcpy DtoH]
+      API calls:   68.00%  404.43ms         3  134.81ms  4.2055ms  395.96ms  cudaMemcpy
+                   31.66%  188.29ms         2  94.146ms  136.76us  188.15ms  cudaMalloc
+                    0.15%  901.43us         1  901.43us  901.43us  901.43us  cuDeviceTotalMem
+                    0.12%  741.34us         2  370.67us  204.39us  536.96us  cudaFree
+                    0.05%  272.99us       101  2.7020us     114ns  121.87us  cuDeviceGetAttribute
+                    0.01%  36.124us         1  36.124us  36.124us  36.124us  cuDeviceGetName
+                    0.00%  27.467us         1  27.467us  27.467us  27.467us  cudaLaunchKernel
+                    0.00%  6.1330us         1  6.1330us  6.1330us  6.1330us  cuDeviceGetPCIBusId
+                    0.00%  1.0440us         2     522ns     173ns     871ns  cuDeviceGet
+                    0.00%     957ns         3     319ns     162ns     630ns  cuDeviceGetCount
+                    0.00%     245ns         1     245ns     245ns     245ns  cuDeviceGetUuid
+nvprof ./q3_2a.o 10
+==1645713== NVPROF is profiling process 1645713, command: ./q3_2a.o 10
+Time to execute add: 3.3977e-05sec
+Number of elements: 10M
+==1645713== Profiling application: ./q3_2a.o 10
+==1645713== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   96.73%  721.50ms         1  721.50ms  721.50ms  721.50ms  add(__int64, float*, float*)
+                    2.18%  16.263ms         2  8.1314ms  8.1175ms  8.1454ms  [CUDA memcpy HtoD]
+                    1.09%  8.1030ms         1  8.1030ms  8.1030ms  8.1030ms  [CUDA memcpy DtoH]
+      API calls:   80.99%  746.52ms         3  248.84ms  8.3294ms  729.85ms  cudaMemcpy
+                   18.74%  172.72ms         2  86.360ms  151.10us  172.57ms  cudaMalloc
+                    0.14%  1.2906ms         2  645.29us  278.92us  1.0117ms  cudaFree
+                    0.10%  917.92us         1  917.92us  917.92us  917.92us  cuDeviceTotalMem
+                    0.03%  265.70us       101  2.6300us     111ns  117.26us  cuDeviceGetAttribute
+                    0.00%  34.906us         1  34.906us  34.906us  34.906us  cuDeviceGetName
+                    0.00%  27.078us         1  27.078us  27.078us  27.078us  cudaLaunchKernel
+                    0.00%  4.6420us         1  4.6420us  4.6420us  4.6420us  cuDeviceGetPCIBusId
+                    0.00%  1.1290us         3     376ns     125ns     820ns  cuDeviceGetCount
+                    0.00%     761ns         2     380ns     118ns     643ns  cuDeviceGet
+                    0.00%     241ns         1     241ns     241ns     241ns  cuDeviceGetUuid
+nvprof ./q3_2a.o 50
+==1645728== NVPROF is profiling process 1645728, command: ./q3_2a.o 50
+Time to execute add: 3.2375e-05sec
+Number of elements: 50M
+==1645728== Profiling application: ./q3_2a.o 50
+==1645728== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   95.66%  3.60969s         1  3.60969s  3.60969s  3.60969s  add(__int64, float*, float*)
+                    2.19%  82.476ms         2  41.238ms  41.211ms  41.265ms  [CUDA memcpy HtoD]
+                    2.16%  81.348ms         1  81.348ms  81.348ms  81.348ms  [CUDA memcpy DtoH]
+      API calls:   94.48%  3.77466s         3  1.25822s  41.430ms  3.69178s  cudaMemcpy
+                    5.32%  212.38ms         2  106.19ms  291.35us  212.09ms  cudaMalloc
+                    0.12%  4.9514ms         2  2.4757ms  2.2980ms  2.6534ms  cudaFree
+                    0.05%  1.8159ms         1  1.8159ms  1.8159ms  1.8159ms  cuDeviceGetName
+                    0.03%  1.0119ms         1  1.0119ms  1.0119ms  1.0119ms  cuDeviceTotalMem
+                    0.01%  284.44us       101  2.8160us     116ns  123.92us  cuDeviceGetAttribute
+                    0.00%  25.172us         1  25.172us  25.172us  25.172us  cudaLaunchKernel
+                    0.00%  5.0550us         1  5.0550us  5.0550us  5.0550us  cuDeviceGetPCIBusId
+                    0.00%  1.2040us         3     401ns     140ns     894ns  cuDeviceGetCount
+                    0.00%     725ns         2     362ns     146ns     579ns  cuDeviceGet
+                    0.00%     250ns         1     250ns     250ns     250ns  cuDeviceGetUuid
+nvprof ./q3_2a.o 100
+==1645742== NVPROF is profiling process 1645742, command: ./q3_2a.o 100
+Time to execute add: 3.3785e-05sec
+Number of elements: 100M
+==1645742== Profiling application: ./q3_2a.o 100
+==1645742== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   95.64%  7.21630s         1  7.21630s  7.21630s  7.21630s  add(__int64, float*, float*)
+                    2.19%  165.09ms         2  82.544ms  82.505ms  82.582ms  [CUDA memcpy HtoD]
+                    2.17%  163.80ms         1  163.80ms  163.80ms  163.80ms  [CUDA memcpy DtoH]
+      API calls:   97.63%  7.54626s         3  2.51542s  82.716ms  7.38074s  cudaMemcpy
+                    2.31%  178.69ms         2  89.345ms  442.87us  178.25ms  cudaMalloc
+                    0.04%  3.0449ms         2  1.5225ms  603.33us  2.4416ms  cudaFree
+                    0.01%  888.95us         1  888.95us  888.95us  888.95us  cuDeviceTotalMem
+                    0.00%  275.41us       101  2.7260us     111ns  122.38us  cuDeviceGetAttribute
+                    0.00%  36.906us         1  36.906us  36.906us  36.906us  cuDeviceGetName
+                    0.00%  25.787us         1  25.787us  25.787us  25.787us  cudaLaunchKernel
+                    0.00%  5.8140us         1  5.8140us  5.8140us  5.8140us  cuDeviceGetPCIBusId
+                    0.00%  1.1030us         3     367ns     165ns     738ns  cuDeviceGetCount
+                    0.00%     688ns         2     344ns     134ns     554ns  cuDeviceGet
+                    0.00%     237ns         1     237ns     237ns     237ns  cuDeviceGetUuid
+echo "\n"
+
+
+nvcc q3_2b.cu -o q3_2b.o
+TIMEFORMAT='%3R';
+nvprof ./q3_2b.o 1
+==1645793== NVPROF is profiling process 1645793, command: ./q3_2b.o 1
+Time to execute add: 5.2438e-05sec
+Number of elements: 1M
+==1645793== Profiling application: ./q3_2b.o 1
+==1645793== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   43.66%  1.5171ms         1  1.5171ms  1.5171ms  1.5171ms  add(__int64, float*, float*)
+                   39.56%  1.3748ms         2  687.42us  680.96us  693.88us  [CUDA memcpy HtoD]
+                   16.78%  582.97us         1  582.97us  582.97us  582.97us  [CUDA memcpy DtoH]
+      API calls:   98.05%  310.86ms         2  155.43ms  115.09us  310.75ms  cudaMalloc
+                    1.33%  4.2132ms         3  1.4044ms  887.13us  2.4374ms  cudaMemcpy
+                    0.32%  1.0174ms         1  1.0174ms  1.0174ms  1.0174ms  cuDeviceTotalMem
+                    0.16%  495.92us       101  4.9100us     114ns  211.90us  cuDeviceGetAttribute
+                    0.11%  360.41us         2  180.20us  180.10us  180.30us  cudaFree
+                    0.02%  67.574us         1  67.574us  67.574us  67.574us  cuDeviceGetName
+                    0.01%  32.796us         1  32.796us  32.796us  32.796us  cudaLaunchKernel
+                    0.00%  5.8230us         1  5.8230us  5.8230us  5.8230us  cuDeviceGetPCIBusId
+                    0.00%  1.1020us         3     367ns     178ns     738ns  cuDeviceGetCount
+                    0.00%     906ns         2     453ns     214ns     692ns  cuDeviceGet
+                    0.00%     241ns         1     241ns     241ns     241ns  cuDeviceGetUuid
+nvprof ./q3_2b.o 5
+==1645806== NVPROF is profiling process 1645806, command: ./q3_2b.o 5
+Time to execute add: 4.5455e-05sec
+Number of elements: 5M
+==1645806== Profiling application: ./q3_2b.o 5
+==1645806== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   40.79%  8.0127ms         2  4.0063ms  4.0061ms  4.0066ms  [CUDA memcpy HtoD]
+                   39.26%  7.7108ms         1  7.7108ms  7.7108ms  7.7108ms  add(__int64, float*, float*)
+                   19.95%  3.9186ms         1  3.9186ms  3.9186ms  3.9186ms  [CUDA memcpy DtoH]
+      API calls:   88.59%  173.91ms         2  86.954ms  134.22us  173.77ms  cudaMalloc
+                   10.33%  20.285ms         3  6.7618ms  4.1806ms  11.879ms  cudaMemcpy
+                    0.45%  887.52us         1  887.52us  887.52us  887.52us  cuDeviceTotalMem
+                    0.45%  881.31us         2  440.66us  199.78us  681.54us  cudaFree
+                    0.14%  269.26us       101  2.6650us     114ns  118.84us  cuDeviceGetAttribute
+                    0.02%  38.196us         1  38.196us  38.196us  38.196us  cudaLaunchKernel
+                    0.02%  36.849us         1  36.849us  36.849us  36.849us  cuDeviceGetName
+                    0.00%  4.5680us         1  4.5680us  4.5680us  4.5680us  cuDeviceGetPCIBusId
+                    0.00%  1.6100us         3     536ns     195ns     787ns  cuDeviceGetCount
+                    0.00%  1.2350us         2     617ns     443ns     792ns  cuDeviceGet
+                    0.00%     233ns         1     233ns     233ns     233ns  cuDeviceGetUuid
+nvprof ./q3_2b.o 10
+==1645819== NVPROF is profiling process 1645819, command: ./q3_2b.o 10
+Time to execute add: 3.9671e-05sec
+Number of elements: 10M
+==1645819== Profiling application: ./q3_2b.o 10
+==1645819== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   40.84%  16.314ms         2  8.1570ms  8.1554ms  8.1586ms  [CUDA memcpy HtoD]
+                   39.19%  15.655ms         1  15.655ms  15.655ms  15.655ms  add(__int64, float*, float*)
+                   19.98%  7.9811ms         1  7.9811ms  7.9811ms  7.9811ms  [CUDA memcpy DtoH]
+      API calls:   82.39%  202.89ms         2  101.44ms  151.67us  202.74ms  cudaMalloc
+                   16.49%  40.598ms         3  13.533ms  8.3373ms  23.884ms  cudaMemcpy
+                    0.62%  1.5205ms         2  760.26us  211.05us  1.3095ms  cudaFree
+                    0.36%  893.41us         1  893.41us  893.41us  893.41us  cuDeviceTotalMem
+                    0.12%  284.01us       101  2.8120us     114ns  124.27us  cuDeviceGetAttribute
+                    0.02%  37.039us         1  37.039us  37.039us  37.039us  cuDeviceGetName
+                    0.01%  32.359us         1  32.359us  32.359us  32.359us  cudaLaunchKernel
+                    0.00%  4.6820us         1  4.6820us  4.6820us  4.6820us  cuDeviceGetPCIBusId
+                    0.00%     911ns         3     303ns     145ns     568ns  cuDeviceGetCount
+                    0.00%     691ns         2     345ns     130ns     561ns  cuDeviceGet
+                    0.00%     236ns         1     236ns     236ns     236ns  cuDeviceGetUuid
+nvprof ./q3_2b.o 50
+==1645832== NVPROF is profiling process 1645832, command: ./q3_2b.o 50
+Time to execute add: 3.1845e-05sec
+Number of elements: 50M
+==1645832== Profiling application: ./q3_2b.o 50
+==1645832== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   41.26%  82.121ms         2  41.061ms  41.046ms  41.075ms  [CUDA memcpy HtoD]
+                   38.41%  76.440ms         1  76.440ms  76.440ms  76.440ms  add(__int64, float*, float*)
+                   20.33%  40.457ms         1  40.457ms  40.457ms  40.457ms  [CUDA memcpy DtoH]
+      API calls:   51.64%  199.75ms         3  66.582ms  41.259ms  117.22ms  cudaMemcpy
+                   47.36%  183.18ms         2  91.590ms  280.34us  182.90ms  cudaMalloc
+                    0.68%  2.6289ms         2  1.3144ms  327.72us  2.3011ms  cudaFree
+                    0.23%  888.27us         1  888.27us  888.27us  888.27us  cuDeviceTotalMem
+                    0.07%  272.74us       101  2.7000us     114ns  121.97us  cuDeviceGetAttribute
+                    0.01%  41.421us         1  41.421us  41.421us  41.421us  cuDeviceGetName
+                    0.01%  24.863us         1  24.863us  24.863us  24.863us  cudaLaunchKernel
+                    0.00%  5.9480us         1  5.9480us  5.9480us  5.9480us  cuDeviceGetPCIBusId
+                    0.00%  1.2130us         3     404ns     191ns     815ns  cuDeviceGetCount
+                    0.00%     761ns         2     380ns     175ns     586ns  cuDeviceGet
+                    0.00%     232ns         1     232ns     232ns     232ns  cuDeviceGetUuid
+nvprof ./q3_2b.o 100
+==1645845== NVPROF is profiling process 1645845, command: ./q3_2b.o 100
+Time to execute add: 3.9061e-05sec
+Number of elements: 100M
+==1645845== Profiling application: ./q3_2b.o 100
+==1645845== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   43.01%  165.90ms         2  82.948ms  82.936ms  82.961ms  [CUDA memcpy HtoD]
+                   35.72%  137.79ms         1  137.79ms  137.79ms  137.79ms  add(__int64, float*, float*)
+                   21.26%  82.020ms         1  82.020ms  82.020ms  82.020ms  [CUDA memcpy DtoH]
+      API calls:   67.51%  386.38ms         3  128.79ms  83.139ms  220.07ms  cudaMemcpy
+                   31.40%  179.71ms         2  89.856ms  444.90us  179.27ms  cudaMalloc
+                    0.71%  4.0725ms         2  2.0362ms  1.6278ms  2.4447ms  cudaFree
+                    0.17%  969.36us         1  969.36us  969.36us  969.36us  cuDeviceTotalMem
+                    0.14%  821.14us       101  8.1300us     110ns  643.98us  cuDeviceGetAttribute
+                    0.06%  339.00us         1  339.00us  339.00us  339.00us  cuDeviceGetName
+                    0.01%  29.729us         1  29.729us  29.729us  29.729us  cudaLaunchKernel
+                    0.00%  4.4710us         1  4.4710us  4.4710us  4.4710us  cuDeviceGetPCIBusId
+                    0.00%     949ns         3     316ns     137ns     587ns  cuDeviceGetCount
+                    0.00%     754ns         2     377ns     134ns     620ns  cuDeviceGet
+                    0.00%     224ns         1     224ns     224ns     224ns  cuDeviceGetUuid
+echo "\n"
+
+
+nvcc q3_2c.cu -o q3_2c.o
+TIMEFORMAT='%3R';
+nvprof ./q3_2c.o 1
+==1645903== NVPROF is profiling process 1645903, command: ./q3_2c.o 1
+Time to execute add: 5.0069e-05sec
+Number of elements: 1M
+==1645903== Profiling application: ./q3_2c.o 1
+==1645903== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   69.87%  1.3742ms         2  687.12us  680.83us  693.41us  [CUDA memcpy HtoD]
+                   29.34%  577.05us         1  577.05us  577.05us  577.05us  [CUDA memcpy DtoH]
+                    0.79%  15.584us         1  15.584us  15.584us  15.584us  add(__int64, float*, float*)
+      API calls:   97.67%  180.34ms         2  90.171ms  120.75us  180.22ms  cudaMalloc
+                    1.47%  2.7090ms         3  902.99us  884.72us  934.97us  cudaMemcpy
+                    0.48%  892.08us         1  892.08us  892.08us  892.08us  cuDeviceTotalMem
+                    0.18%  340.91us         2  170.46us  153.49us  187.42us  cudaFree
+                    0.15%  284.27us       101  2.8140us     113ns  127.09us  cuDeviceGetAttribute
+                    0.02%  39.842us         1  39.842us  39.842us  39.842us  cuDeviceGetName
+                    0.02%  31.271us         1  31.271us  31.271us  31.271us  cudaLaunchKernel
+                    0.00%  4.5360us         1  4.5360us  4.5360us  4.5360us  cuDeviceGetPCIBusId
+                    0.00%  1.2970us         3     432ns     213ns     810ns  cuDeviceGetCount
+                    0.00%     715ns         2     357ns     147ns     568ns  cuDeviceGet
+                    0.00%     218ns         1     218ns     218ns     218ns  cuDeviceGetUuid
+nvprof ./q3_2c.o 5
+==1645916== NVPROF is profiling process 1645916, command: ./q3_2c.o 5
+Time to execute add: 3.2999e-05sec
+Number of elements: 5M
+==1645916== Profiling application: ./q3_2c.o 5
+==1645916== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.61%  8.0145ms         2  4.0072ms  4.0051ms  4.0094ms  [CUDA memcpy HtoD]
+                   32.45%  3.9043ms         1  3.9043ms  3.9043ms  3.9043ms  [CUDA memcpy DtoH]
+                    0.94%  112.70us         1  112.70us  112.70us  112.70us  add(__int64, float*, float*)
+      API calls:   93.30%  206.44ms         2  103.22ms  250.89us  206.19ms  cudaMalloc
+                    5.73%  12.684ms         3  4.2279ms  4.1847ms  4.2749ms  cudaMemcpy
+                    0.41%  897.09us         1  897.09us  897.09us  897.09us  cuDeviceTotalMem
+                    0.39%  869.71us         2  434.85us  194.25us  675.45us  cudaFree
+                    0.14%  303.34us       101  3.0030us     112ns  146.65us  cuDeviceGetAttribute
+                    0.02%  40.457us         1  40.457us  40.457us  40.457us  cuDeviceGetName
+                    0.01%  25.759us         1  25.759us  25.759us  25.759us  cudaLaunchKernel
+                    0.00%  5.7930us         1  5.7930us  5.7930us  5.7930us  cuDeviceGetPCIBusId
+                    0.00%  1.2250us         3     408ns     162ns     868ns  cuDeviceGetCount
+                    0.00%     715ns         2     357ns     127ns     588ns  cuDeviceGet
+                    0.00%     223ns         1     223ns     223ns     223ns  cuDeviceGetUuid
+nvprof ./q3_2c.o 10
+==1645929== NVPROF is profiling process 1645929, command: ./q3_2c.o 10
+Time to execute add: 3.71e-05sec
+Number of elements: 10M
+==1645929== Profiling application: ./q3_2c.o 10
+==1645929== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.53%  16.321ms         2  8.1607ms  8.1534ms  8.1680ms  [CUDA memcpy HtoD]
+                   32.54%  7.9819ms         1  7.9819ms  7.9819ms  7.9819ms  [CUDA memcpy DtoH]
+                    0.93%  229.09us         1  229.09us  229.09us  229.09us  add(__int64, float*, float*)
+      API calls:   70.85%  190.59ms         2  95.296ms  149.93us  190.44ms  cudaMalloc
+                   13.29%  35.758ms         1  35.758ms  35.758ms  35.758ms  cuDeviceTotalMem
+                    9.36%  25.187ms         3  8.3958ms  8.3502ms  8.4740ms  cudaMemcpy
+                    3.67%  9.8823ms       101  97.844us     111ns  9.2639ms  cuDeviceGetAttribute
+                    2.23%  5.9987ms         1  5.9987ms  5.9987ms  5.9987ms  cuDeviceGetName
+                    0.57%  1.5441ms         2  772.05us  223.88us  1.3202ms  cudaFree
+                    0.01%  28.887us         1  28.887us  28.887us  28.887us  cudaLaunchKernel
+                    0.00%  5.5440us         1  5.5440us  5.5440us  5.5440us  cuDeviceGetPCIBusId
+                    0.00%  1.3970us         3     465ns     177ns  1.0080us  cuDeviceGetCount
+                    0.00%     772ns         2     386ns     127ns     645ns  cuDeviceGet
+                    0.00%     210ns         1     210ns     210ns     210ns  cuDeviceGetUuid
+nvprof ./q3_2c.o 50
+==1645942== NVPROF is profiling process 1645942, command: ./q3_2c.o 50
+Time to execute add: 3.7713e-05sec
+Number of elements: 50M
+==1645942== Profiling application: ./q3_2c.o 50
+==1645942== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.34%  82.779ms         2  41.390ms  41.338ms  41.442ms  [CUDA memcpy HtoD]
+                   32.73%  40.836ms         1  40.836ms  40.836ms  40.836ms  [CUDA memcpy DtoH]
+                    0.93%  1.1594ms         1  1.1594ms  1.1594ms  1.1594ms  add(__int64, float*, float*)
+      API calls:   57.38%  174.18ms         2  87.089ms  287.46us  173.89ms  cudaMalloc
+                   41.34%  125.50ms         3  41.833ms  41.551ms  42.326ms  cudaMemcpy
+                    0.87%  2.6335ms         2  1.3168ms  330.37us  2.3032ms  cudaFree
+                    0.29%  894.50us         1  894.50us  894.50us  894.50us  cuDeviceTotalMem
+                    0.09%  270.54us       101  2.6780us     112ns  118.15us  cuDeviceGetAttribute
+                    0.01%  35.869us         1  35.869us  35.869us  35.869us  cuDeviceGetName
+                    0.01%  29.736us         1  29.736us  29.736us  29.736us  cudaLaunchKernel
+                    0.00%  4.8470us         1  4.8470us  4.8470us  4.8470us  cuDeviceGetPCIBusId
+                    0.00%     994ns         3     331ns     145ns     683ns  cuDeviceGetCount
+                    0.00%     725ns         2     362ns     152ns     573ns  cuDeviceGet
+                    0.00%     231ns         1     231ns     231ns     231ns  cuDeviceGetUuid
+nvprof ./q3_2c.o 100
+==1645955== NVPROF is profiling process 1645955, command: ./q3_2c.o 100
+Time to execute add: 3.5092e-05sec
+Number of elements: 100M
+==1645955== Profiling application: ./q3_2c.o 100
+==1645955== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   66.30%  165.73ms         2  82.867ms  82.797ms  82.938ms  [CUDA memcpy HtoD]
+                   32.77%  81.920ms         1  81.920ms  81.920ms  81.920ms  [CUDA memcpy DtoH]
+                    0.93%  2.3231ms         1  2.3231ms  2.3231ms  2.3231ms  add(__int64, float*, float*)
+      API calls:   53.91%  298.07ms         2  149.04ms  454.83us  297.62ms  cudaMalloc
+                   45.34%  250.68ms         3  83.560ms  83.009ms  84.527ms  cudaMemcpy
+                    0.53%  2.9141ms         2  1.4570ms  472.05us  2.4420ms  cudaFree
+                    0.16%  908.75us         1  908.75us  908.75us  908.75us  cuDeviceTotalMem
+                    0.05%  285.62us       101  2.8270us     112ns  125.62us  cuDeviceGetAttribute
+                    0.01%  42.966us         1  42.966us  42.966us  42.966us  cuDeviceGetName
+                    0.00%  25.942us         1  25.942us  25.942us  25.942us  cudaLaunchKernel
+                    0.00%  5.6270us         1  5.6270us  5.6270us  5.6270us  cuDeviceGetPCIBusId
+                    0.00%  1.0560us         3     352ns     204ns     598ns  cuDeviceGetCount
+                    0.00%     737ns         2     368ns     179ns     558ns  cuDeviceGet
+                    0.00%     247ns         1     247ns     247ns     247ns  cuDeviceGetUuid
+echo "\n"
+
+
+nvcc q3_3a.cu -o q3_3a.o
+TIMEFORMAT='%3R';
+nvprof ./q3_3a.o 1
+==1646003== NVPROF is profiling process 1646003, command: ./q3_3a.o 1
+Time to execute add: 5.7426e-05sec
+Number of elements: 1M
+==1646003== Profiling application: ./q3_3a.o 1
+==1646003== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  85.737ms         1  85.737ms  85.737ms  85.737ms  add(__int64, float*, float*)
+      API calls:   77.56%  304.22ms         2  152.11ms  15.346us  304.21ms  cudaMallocManaged
+                   21.86%  85.739ms         1  85.739ms  85.739ms  85.739ms  cudaDeviceSynchronize
+                    0.26%  1.0333ms         2  516.67us  515.23us  518.11us  cudaFree
+                    0.23%  894.29us         1  894.29us  894.29us  894.29us  cuDeviceTotalMem
+                    0.07%  280.07us       101  2.7720us     115ns  121.58us  cuDeviceGetAttribute
+                    0.01%  36.737us         1  36.737us  36.737us  36.737us  cuDeviceGetName
+                    0.01%  35.492us         1  35.492us  35.492us  35.492us  cudaLaunchKernel
+                    0.00%  5.1450us         1  5.1450us  5.1450us  5.1450us  cuDeviceGetPCIBusId
+                    0.00%     975ns         3     325ns     156ns     652ns  cuDeviceGetCount
+                    0.00%     793ns         2     396ns     139ns     654ns  cuDeviceGet
+                    0.00%     252ns         1     252ns     252ns     252ns  cuDeviceGetUuid
+
+==1646003== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      48  162.83KB  4.0000KB  0.9961MB  7.632813MB  738.7500us  Host To Device
+      12         -         -         -           -  1.959895ms  Gpu page fault groups
+Total CPU Page faults: 24
+nvprof ./q3_3a.o 5
+==1646016== NVPROF is profiling process 1646016, command: ./q3_3a.o 5
+Time to execute add: 5.2463e-05sec
+Number of elements: 5M
+==1646016== Profiling application: ./q3_3a.o 5
+==1646016== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  355.48ms         1  355.48ms  355.48ms  355.48ms  add(__int64, float*, float*)
+      API calls:   63.75%  355.48ms         1  355.48ms  355.48ms  355.48ms  cudaDeviceSynchronize
+                   35.39%  197.36ms         2  98.682ms  21.617us  197.34ms  cudaMallocManaged
+                    0.63%  3.5208ms         2  1.7604ms  1.7173ms  1.8034ms  cudaFree
+                    0.16%  900.51us         1  900.51us  900.51us  900.51us  cuDeviceTotalMem
+                    0.05%  268.58us       101  2.6590us     111ns  117.43us  cuDeviceGetAttribute
+                    0.01%  37.315us         1  37.315us  37.315us  37.315us  cudaLaunchKernel
+                    0.01%  35.628us         1  35.628us  35.628us  35.628us  cuDeviceGetName
+                    0.00%  5.4410us         1  5.4410us  5.4410us  5.4410us  cuDeviceGetPCIBusId
+                    0.00%  1.1800us         3     393ns     147ns     839ns  cuDeviceGetCount
+                    0.00%     683ns         2     341ns     129ns     554ns  cuDeviceGet
+                    0.00%     234ns         1     234ns     234ns     234ns  cuDeviceGetUuid
+
+==1646016== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     236  165.53KB  4.0000KB  0.9961MB  38.14844MB  3.669617ms  Host To Device
+      59         -         -         -           -  7.725337ms  Gpu page fault groups
+Total CPU Page faults: 118
+nvprof ./q3_3a.o 10
+==1646029== NVPROF is profiling process 1646029, command: ./q3_3a.o 10
+Time to execute add: 6.4221e-05sec
+Number of elements: 10M
+==1646029== Profiling application: ./q3_3a.o 10
+==1646029== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  645.66ms         1  645.66ms  645.66ms  645.66ms  add(__int64, float*, float*)
+      API calls:   75.91%  645.65ms         1  645.65ms  645.65ms  645.65ms  cudaDeviceSynchronize
+                   23.18%  197.20ms         2  98.598ms  19.976us  197.18ms  cudaMallocManaged
+                    0.76%  6.4673ms         2  3.2336ms  3.2163ms  3.2510ms  cudaFree
+                    0.10%  887.37us         1  887.37us  887.37us  887.37us  cuDeviceTotalMem
+                    0.03%  266.25us       101  2.6360us     114ns  117.58us  cuDeviceGetAttribute
+                    0.01%  45.358us         1  45.358us  45.358us  45.358us  cudaLaunchKernel
+                    0.00%  35.757us         1  35.757us  35.757us  35.757us  cuDeviceGetName
+                    0.00%  5.2820us         1  5.2820us  5.2820us  5.2820us  cuDeviceGetPCIBusId
+                    0.00%     928ns         3     309ns     140ns     634ns  cuDeviceGetCount
+                    0.00%     724ns         2     362ns     144ns     580ns  cuDeviceGet
+                    0.00%     208ns         1     208ns     208ns     208ns  cuDeviceGetUuid
+
+==1646029== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     464  168.38KB  4.0000KB  0.9961MB  76.29688MB  7.314821ms  Host To Device
+     116         -         -         -           -  14.81042ms  Gpu page fault groups
+Total CPU Page faults: 232
+nvprof ./q3_3a.o 50
+==1646042== NVPROF is profiling process 1646042, command: ./q3_3a.o 50
+Time to execute add: 7.2818e-05sec
+Number of elements: 50M
+==1646042== Profiling application: ./q3_3a.o 50
+==1646042== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  3.22697s         1  3.22697s  3.22697s  3.22697s  add(__int64, float*, float*)
+      API calls:   93.65%  3.22700s         1  3.22700s  3.22700s  3.22700s  cudaDeviceSynchronize
+                    5.49%  189.20ms         2  94.602ms  17.958us  189.19ms  cudaMallocManaged
+                    0.82%  28.286ms         2  14.143ms  13.816ms  14.469ms  cudaFree
+                    0.03%  901.12us         1  901.12us  901.12us  901.12us  cuDeviceTotalMem
+                    0.01%  266.57us       101  2.6390us     113ns  118.61us  cuDeviceGetAttribute
+                    0.00%  53.058us         1  53.058us  53.058us  53.058us  cudaLaunchKernel
+                    0.00%  35.416us         1  35.416us  35.416us  35.416us  cuDeviceGetName
+                    0.00%  4.3430us         1  4.3430us  4.3430us  4.3430us  cuDeviceGetPCIBusId
+                    0.00%  1.0830us         3     361ns     173ns     700ns  cuDeviceGetCount
+                    0.00%     827ns         2     413ns     142ns     685ns  cuDeviceGet
+                    0.00%     377ns         1     377ns     377ns     377ns  cuDeviceGetUuid
+
+==1646042== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    2300  169.84KB  4.0000KB  0.9961MB  381.4766MB  36.55236ms  Host To Device
+     575         -         -         -           -  71.21917ms  Gpu page fault groups
+Total CPU Page faults: 1150
+nvprof ./q3_3a.o 100
+==1646065== NVPROF is profiling process 1646065, command: ./q3_3a.o 100
+Time to execute add: 6.9646e-05sec
+Number of elements: 100M
+==1646065== Profiling application: ./q3_3a.o 100
+==1646065== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  6.44777s         1  6.44777s  6.44777s  6.44777s  add(__int64, float*, float*)
+      API calls:   96.30%  6.44779s         1  6.44779s  6.44779s  6.44779s  cudaDeviceSynchronize
+                    2.92%  195.82ms         2  97.911ms  20.180us  195.80ms  cudaMallocManaged
+                    0.76%  50.715ms         2  25.357ms  24.985ms  25.730ms  cudaFree
+                    0.01%  892.92us         1  892.92us  892.92us  892.92us  cuDeviceTotalMem
+                    0.00%  277.94us       101  2.7510us     112ns  123.77us  cuDeviceGetAttribute
+                    0.00%  49.404us         1  49.404us  49.404us  49.404us  cudaLaunchKernel
+                    0.00%  35.161us         1  35.161us  35.161us  35.161us  cuDeviceGetName
+                    0.00%  4.5590us         1  4.5590us  4.5590us  4.5590us  cuDeviceGetPCIBusId
+                    0.00%  1.0590us         3     353ns     169ns     700ns  cuDeviceGetCount
+                    0.00%     765ns         2     382ns     139ns     626ns  cuDeviceGet
+                    0.00%     236ns         1     236ns     236ns     236ns  cuDeviceGetUuid
+
+==1646065== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    4584  170.43KB  4.0000KB  0.9961MB  762.9453MB  73.07544ms  Host To Device
+    1146         -         -         -           -  139.3692ms  Gpu page fault groups
+Total CPU Page faults: 2292
+echo "\n"
+
+
+nvcc q3_3b.cu -o q3_3b.o
+TIMEFORMAT='%3R';
+nvprof ./q3_3b.o 1
+==1646113== NVPROF is profiling process 1646113, command: ./q3_3b.o 1
+Time to execute add: 5.4615e-05sec
+Number of elements: 1M
+==1646113== Profiling application: ./q3_3b.o 1
+==1646113== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  2.5556ms         1  2.5556ms  2.5556ms  2.5556ms  add(__int64, float*, float*)
+      API calls:   96.69%  203.83ms         2  101.92ms  14.773us  203.82ms  cudaMallocManaged
+                    1.21%  2.5567ms         1  2.5567ms  2.5567ms  2.5567ms  cudaDeviceSynchronize
+                    1.06%  2.2310ms         1  2.2310ms  2.2310ms  2.2310ms  cuDeviceGetName
+                    0.47%  999.59us         2  499.79us  496.08us  503.51us  cudaFree
+                    0.42%  889.28us         1  889.28us  889.28us  889.28us  cuDeviceTotalMem
+                    0.13%  271.76us       101  2.6900us     112ns  120.18us  cuDeviceGetAttribute
+                    0.02%  32.333us         1  32.333us  32.333us  32.333us  cudaLaunchKernel
+                    0.00%  5.6030us         1  5.6030us  5.6030us  5.6030us  cuDeviceGetPCIBusId
+                    0.00%     903ns         3     301ns     152ns     575ns  cuDeviceGetCount
+                    0.00%     732ns         2     366ns     157ns     575ns  cuDeviceGet
+                    0.00%     223ns         1     223ns     223ns     223ns  cuDeviceGetUuid
+
+==1646113== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      48  162.83KB  4.0000KB  0.9961MB  7.632813MB  731.6750us  Host To Device
+      12         -         -         -           -  1.819834ms  Gpu page fault groups
+Total CPU Page faults: 24
+nvprof ./q3_3b.o 5
+==1646126== NVPROF is profiling process 1646126, command: ./q3_3b.o 5
+Time to execute add: 5.2725e-05sec
+Number of elements: 5M
+==1646126== Profiling application: ./q3_3b.o 5
+==1646126== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  12.427ms         1  12.427ms  12.427ms  12.427ms  add(__int64, float*, float*)
+      API calls:   92.40%  209.42ms         2  104.71ms  20.181us  209.40ms  cudaMallocManaged
+                    5.48%  12.428ms         1  12.428ms  12.428ms  12.428ms  cudaDeviceSynchronize
+                    1.57%  3.5559ms         2  1.7779ms  1.7510ms  1.8049ms  cudaFree
+                    0.39%  893.43us         1  893.43us  893.43us  893.43us  cuDeviceTotalMem
+                    0.12%  270.80us       101  2.6810us     115ns  118.30us  cuDeviceGetAttribute
+                    0.02%  37.434us         1  37.434us  37.434us  37.434us  cudaLaunchKernel
+                    0.02%  36.350us         1  36.350us  36.350us  36.350us  cuDeviceGetName
+                    0.00%  5.4130us         1  5.4130us  5.4130us  5.4130us  cuDeviceGetPCIBusId
+                    0.00%     958ns         3     319ns     181ns     596ns  cuDeviceGetCount
+                    0.00%     767ns         2     383ns     143ns     624ns  cuDeviceGet
+                    0.00%     260ns         1     260ns     260ns     260ns  cuDeviceGetUuid
+
+==1646126== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     236  165.53KB  4.0000KB  0.9961MB  38.14844MB  3.695053ms  Host To Device
+      59         -         -         -           -  7.661856ms  Gpu page fault groups
+Total CPU Page faults: 118
+nvprof ./q3_3b.o 10
+==1646139== NVPROF is profiling process 1646139, command: ./q3_3b.o 10
+Time to execute add: 5.5326e-05sec
+Number of elements: 10M
+==1646139== Profiling application: ./q3_3b.o 10
+==1646139== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  24.317ms         1  24.317ms  24.317ms  24.317ms  add(__int64, float*, float*)
+      API calls:   87.30%  222.49ms         2  111.24ms  19.460us  222.47ms  cudaMallocManaged
+                    9.54%  24.318ms         1  24.318ms  24.318ms  24.318ms  cudaDeviceSynchronize
+                    2.45%  6.2451ms         2  3.1225ms  3.0937ms  3.1514ms  cudaFree
+                    0.40%  1.0245ms         1  1.0245ms  1.0245ms  1.0245ms  cuDeviceTotalMem
+                    0.26%  661.95us       101  6.5530us     112ns  309.16us  cuDeviceGetAttribute
+                    0.02%  58.572us         1  58.572us  58.572us  58.572us  cuDeviceGetName
+                    0.02%  39.865us         1  39.865us  39.865us  39.865us  cudaLaunchKernel
+                    0.00%  5.4570us         1  5.4570us  5.4570us  5.4570us  cuDeviceGetPCIBusId
+                    0.00%  1.2240us         3     408ns     186ns     798ns  cuDeviceGetCount
+                    0.00%     710ns         2     355ns     122ns     588ns  cuDeviceGet
+                    0.00%     247ns         1     247ns     247ns     247ns  cuDeviceGetUuid
+
+==1646139== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     464  168.38KB  4.0000KB  0.9961MB  76.29688MB  7.371162ms  Host To Device
+     118         -         -         -           -  14.78406ms  Gpu page fault groups
+Total CPU Page faults: 232
+nvprof ./q3_3b.o 50
+==1646152== NVPROF is profiling process 1646152, command: ./q3_3b.o 50
+Time to execute add: 5.9043e-05sec
+Number of elements: 50M
+==1646152== Profiling application: ./q3_3b.o 50
+==1646152== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  122.69ms         1  122.69ms  122.69ms  122.69ms  add(__int64, float*, float*)
+      API calls:   58.82%  214.07ms         2  107.03ms  19.381us  214.05ms  cudaMallocManaged
+                   33.71%  122.69ms         1  122.69ms  122.69ms  122.69ms  cudaDeviceSynchronize
+                    7.12%  25.909ms         2  12.955ms  12.924ms  12.985ms  cudaFree
+                    0.25%  919.03us         1  919.03us  919.03us  919.03us  cuDeviceTotalMem
+                    0.08%  280.98us       101  2.7810us     114ns  127.00us  cuDeviceGetAttribute
+                    0.01%  42.348us         1  42.348us  42.348us  42.348us  cuDeviceGetName
+                    0.01%  41.422us         1  41.422us  41.422us  41.422us  cudaLaunchKernel
+                    0.00%  5.5670us         1  5.5670us  5.5670us  5.5670us  cuDeviceGetPCIBusId
+                    0.00%  1.1420us         3     380ns     179ns     772ns  cuDeviceGetCount
+                    0.00%     676ns         2     338ns     141ns     535ns  cuDeviceGet
+                    0.00%     239ns         1     239ns     239ns     239ns  cuDeviceGetUuid
+
+==1646152== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    2300  169.84KB  4.0000KB  0.9961MB  381.4766MB  36.84890ms  Host To Device
+     589         -         -         -           -  75.10367ms  Gpu page fault groups
+Total CPU Page faults: 1150
+nvprof ./q3_3b.o 100
+==1646165== NVPROF is profiling process 1646165, command: ./q3_3b.o 100
+Time to execute add: 6.8164e-05sec
+Number of elements: 100M
+==1646165== Profiling application: ./q3_3b.o 100
+==1646165== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  228.70ms         1  228.70ms  228.70ms  228.70ms  add(__int64, float*, float*)
+      API calls:   46.33%  228.70ms         1  228.70ms  228.70ms  228.70ms  cudaDeviceSynchronize
+                   43.38%  214.15ms         2  107.08ms  19.999us  214.13ms  cudaMallocManaged
+                   10.02%  49.487ms         2  24.743ms  24.406ms  25.080ms  cudaFree
+                    0.18%  892.57us         1  892.57us  892.57us  892.57us  cuDeviceTotalMem
+                    0.06%  306.48us       101  3.0340us     112ns  136.62us  cuDeviceGetAttribute
+                    0.01%  49.561us         1  49.561us  49.561us  49.561us  cudaLaunchKernel
+                    0.01%  39.614us         1  39.614us  39.614us  39.614us  cuDeviceGetName
+                    0.00%  5.1150us         1  5.1150us  5.1150us  5.1150us  cuDeviceGetPCIBusId
+                    0.00%  1.2010us         3     400ns     146ns     862ns  cuDeviceGetCount
+                    0.00%     588ns         2     294ns     134ns     454ns  cuDeviceGet
+                    0.00%     201ns         1     201ns     201ns     201ns  cuDeviceGetUuid
+
+==1646165== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    4584  170.43KB  4.0000KB  0.9961MB  762.9453MB  73.57116ms  Host To Device
+    1163         -         -         -           -  137.9876ms  Gpu page fault groups
+Total CPU Page faults: 2292
+echo "\n"
+
+
+nvcc q3_3c.cu -o q3_3c.o
+TIMEFORMAT='%3R';
+nvprof ./q3_3c.o 1
+==1646215== NVPROF is profiling process 1646215, command: ./q3_3c.o 1
+Time to execute add: 6.7625e-05sec
+Number of elements: 1M
+==1646215== Profiling application: ./q3_3c.o 1
+==1646215== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  2.0643ms         1  2.0643ms  2.0643ms  2.0643ms  add(__int64, float*, float*)
+      API calls:   97.96%  212.26ms         2  106.13ms  15.350us  212.25ms  cudaMallocManaged
+                    0.95%  2.0649ms         1  2.0649ms  2.0649ms  2.0649ms  cudaDeviceSynchronize
+                    0.49%  1.0636ms         2  531.80us  527.18us  536.42us  cudaFree
+                    0.42%  913.24us         1  913.24us  913.24us  913.24us  cuDeviceTotalMem
+                    0.13%  280.36us       101  2.7750us     114ns  122.89us  cuDeviceGetAttribute
+                    0.02%  41.104us         1  41.104us  41.104us  41.104us  cuDeviceGetName
+                    0.02%  39.571us         1  39.571us  39.571us  39.571us  cudaLaunchKernel
+                    0.00%  5.1560us         1  5.1560us  5.1560us  5.1560us  cuDeviceGetPCIBusId
+                    0.00%  1.3290us         3     443ns     163ns     941ns  cuDeviceGetCount
+                    0.00%     726ns         2     363ns     153ns     573ns  cuDeviceGet
+                    0.00%     251ns         1     251ns     251ns     251ns  cuDeviceGetUuid
+
+==1646215== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     140  55.828KB  4.0000KB  960.00KB  7.632813MB  867.8060us  Host To Device
+       9         -         -         -           -  2.047447ms  Gpu page fault groups
+Total CPU Page faults: 24
+nvprof ./q3_3c.o 5
+==1646228== NVPROF is profiling process 1646228, command: ./q3_3c.o 5
+Time to execute add: 5.8739e-05sec
+Number of elements: 5M
+==1646228== Profiling application: ./q3_3c.o 5
+==1646228== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  9.6329ms         1  9.6329ms  9.6329ms  9.6329ms  add(__int64, float*, float*)
+      API calls:   93.49%  206.59ms         2  103.29ms  18.088us  206.57ms  cudaMallocManaged
+                    4.36%  9.6339ms         1  9.6339ms  9.6339ms  9.6339ms  cudaDeviceSynchronize
+                    1.58%  3.4860ms         2  1.7430ms  1.6858ms  1.8002ms  cudaFree
+                    0.41%  904.97us         1  904.97us  904.97us  904.97us  cuDeviceTotalMem
+                    0.13%  281.51us       101  2.7870us     114ns  126.25us  cuDeviceGetAttribute
+                    0.02%  42.645us         1  42.645us  42.645us  42.645us  cudaLaunchKernel
+                    0.02%  39.588us         1  39.588us  39.588us  39.588us  cuDeviceGetName
+                    0.00%  4.8660us         1  4.8660us  4.8660us  4.8660us  cuDeviceGetPCIBusId
+                    0.00%  1.2930us         3     431ns     164ns     920ns  cuDeviceGetCount
+                    0.00%     919ns         2     459ns     144ns     775ns  cuDeviceGet
+                    0.00%     286ns         1     286ns     286ns     286ns  cuDeviceGetUuid
+
+==1646228== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     755  51.740KB  4.0000KB  980.00KB  38.14844MB  4.546568ms  Host To Device
+      50         -         -         -           -  9.552628ms  Gpu page fault groups
+Total CPU Page faults: 118
+nvprof ./q3_3c.o 10
+==1646241== NVPROF is profiling process 1646241, command: ./q3_3c.o 10
+Time to execute add: 6.112e-05sec
+Number of elements: 10M
+==1646241== Profiling application: ./q3_3c.o 10
+==1646241== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  17.963ms         1  17.963ms  17.963ms  17.963ms  add(__int64, float*, float*)
+      API calls:   88.26%  192.31ms         2  96.153ms  19.079us  192.29ms  cudaMallocManaged
+                    8.24%  17.964ms         1  17.964ms  17.964ms  17.964ms  cudaDeviceSynchronize
+                    2.91%  6.3442ms         2  3.1721ms  3.1537ms  3.1905ms  cudaFree
+                    0.41%  899.09us         1  899.09us  899.09us  899.09us  cuDeviceTotalMem
+                    0.13%  284.88us       101  2.8200us     111ns  126.14us  cuDeviceGetAttribute
+                    0.02%  43.342us         1  43.342us  43.342us  43.342us  cudaLaunchKernel
+                    0.02%  38.946us         1  38.946us  38.946us  38.946us  cuDeviceGetName
+                    0.00%  5.5470us         1  5.5470us  5.5470us  5.5470us  cuDeviceGetPCIBusId
+                    0.00%  1.0050us         3     335ns     125ns     738ns  cuDeviceGetCount
+                    0.00%     784ns         2     392ns     141ns     643ns  cuDeviceGet
+                    0.00%     239ns         1     239ns     239ns     239ns  cuDeviceGetUuid
+
+==1646241== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    1463  53.402KB  4.0000KB  988.00KB  76.29688MB  9.058168ms  Host To Device
+     100         -         -         -           -  17.79007ms  Gpu page fault groups
+Total CPU Page faults: 232
+nvprof ./q3_3c.o 50
+==1646254== NVPROF is profiling process 1646254, command: ./q3_3c.o 50
+Time to execute add: 5.8761e-05sec
+Number of elements: 50M
+==1646254== Profiling application: ./q3_3c.o 50
+==1646254== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  91.830ms         1  91.830ms  91.830ms  91.830ms  add(__int64, float*, float*)
+      API calls:   63.18%  216.43ms         2  108.21ms  19.432us  216.41ms  cudaMallocManaged
+                   26.81%  91.831ms         1  91.831ms  91.831ms  91.831ms  cudaDeviceSynchronize
+                    9.64%  33.035ms         2  16.517ms  15.673ms  17.362ms  cudaFree
+                    0.26%  898.03us         1  898.03us  898.03us  898.03us  cuDeviceTotalMem
+                    0.08%  272.01us       101  2.6930us     117ns  119.04us  cuDeviceGetAttribute
+                    0.01%  40.230us         1  40.230us  40.230us  40.230us  cudaLaunchKernel
+                    0.01%  38.466us         1  38.466us  38.466us  38.466us  cuDeviceGetName
+                    0.00%  6.2270us         1  6.2270us  6.2270us  6.2270us  cuDeviceGetPCIBusId
+                    0.00%  1.9940us         3     664ns     208ns     943ns  cuDeviceGetCount
+                    0.00%     985ns         2     492ns     460ns     525ns  cuDeviceGet
+                    0.00%     254ns         1     254ns     254ns     254ns  cuDeviceGetUuid
+
+==1646254== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    4660  56.597KB  4.0000KB  0.9922MB  257.5625MB  31.01468ms  Host To Device
+Total CPU Page faults: 1150
+nvprof ./q3_3c.o 100
+==1646277== NVPROF is profiling process 1646277, command: ./q3_3c.o 100
+Time to execute add: 6.6613e-05sec
+Number of elements: 100M
+==1646277== Profiling application: ./q3_3c.o 100
+==1646277== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  169.36ms         1  169.36ms  169.36ms  169.36ms  add(__int64, float*, float*)
+      API calls:   48.33%  204.18ms         2  102.09ms  20.498us  204.16ms  cudaMallocManaged
+                   40.09%  169.36ms         1  169.36ms  169.36ms  169.36ms  cudaDeviceSynchronize
+                   11.28%  47.655ms         2  23.828ms  23.826ms  23.830ms  cudaFree
+                    0.21%  896.26us         1  896.26us  896.26us  896.26us  cuDeviceTotalMem
+                    0.06%  269.88us       101  2.6720us     111ns  117.95us  cuDeviceGetAttribute
+                    0.01%  49.080us         1  49.080us  49.080us  49.080us  cudaLaunchKernel
+                    0.01%  36.523us         1  36.523us  36.523us  36.523us  cuDeviceGetName
+                    0.00%  5.2690us         1  5.2690us  5.2690us  5.2690us  cuDeviceGetPCIBusId
+                    0.00%  3.2650us         2  1.6320us     155ns  3.1100us  cuDeviceGet
+                    0.00%  1.0370us         3     345ns     166ns     681ns  cuDeviceGetCount
+                    0.00%     260ns         1     260ns     260ns     260ns  cuDeviceGetUuid
+
+==1646277== Unified Memory profiling result:
+Device "Quadro RTX 8000 (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    9336  50.674KB  4.0000KB  0.9922MB  462.0039MB  55.39349ms  Host To Device
+    1029         -         -         -           -  172.1594ms  Gpu page fault groups
+Total CPU Page faults: 2292
+echo "\n"
